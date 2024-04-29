@@ -1,11 +1,10 @@
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
-import { ChangeEventHandler, FC, useCallback } from 'react'
+import { FC, useCallback } from 'react'
 import { LocalizationProvider } from '@mui/x-date-pickers'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs, { Dayjs } from 'dayjs'
-import { RootState } from '@/store/store'
+import { RootState } from '../../store/store'
 import { useSelector } from 'react-redux'
-import { LoadedDataType } from '@/pages/index.types'
 import { datePickerStyles } from './datePicker.constants'
 
 type DatePickerPropsT = {
@@ -22,8 +21,9 @@ type DatePickerPropsT = {
 
 export const DatePicker: FC<DatePickerPropsT> = ({ handleChangeDate }) => {
   const loadedData = useSelector((state: RootState) => state.loadedData)
+  const bookingForm = useSelector((state: RootState) => state.bookingForm)
 
-  const maxDay = dayjs().add(20, 'day')
+  const maxDay = dayjs().add(60, 'day')
 
   const isAvailable = useCallback(
     (date: Dayjs): boolean => {
@@ -50,6 +50,7 @@ export const DatePicker: FC<DatePickerPropsT> = ({ handleChangeDate }) => {
           shouldDisableDate={isAvailable}
           onChange={handleChangeDate}
           sx={datePickerStyles}
+          value={bookingForm.date ? dayjs(bookingForm.date) : null}
         />
       </LocalizationProvider>
     </div>

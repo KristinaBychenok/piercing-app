@@ -1,0 +1,13 @@
+{
+  "form": {
+    "formHeader": "Skontaktuj się ze mną w przypadku jakichkolwiek pytań lub możliwości!",
+    "nameField": "Imię",
+    "phoneField": "Telefon",
+    "emailField": "Email",
+    "serviceTypeField": "Rodzaj usługi",
+    "serviceField": "Usługa",
+    "studioField": "Studio",
+    "timeField": "Czas",
+    "formButton": "Rezerwuj teraz"
+  }
+}

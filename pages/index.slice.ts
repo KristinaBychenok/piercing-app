@@ -1,20 +1,32 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { LoadedDataType } from './index.types'
+import { DateTime, LoadedDataType, LoadedServicesType } from './index.types'
 
 const initState: LoadedDataType = {
   data: [],
+  services: [],
 }
 
 export const loadedDataSlice = createSlice({
   name: 'loadedData',
   initialState: initState,
   reducers: {
-    addLoadedData: (state, action: PayloadAction<LoadedDataType>) => {
-      state.data = action.payload.data
+    addLoadedData: (state, action: PayloadAction<DateTime[]>) => {
+      state.data = action.payload
+    },
+    addServices: (state, action: PayloadAction<LoadedServicesType[]>) => {
+      state.services = action.payload
+    },
+    clearLoadedData: (state) => {
+      state.data = []
+      state.services = []
     },
   },
 })
 
-export const { addLoadedData } = loadedDataSlice.actions
+export const {
+  addLoadedData,
+  addServices,
+  clearLoadedData,
+} = loadedDataSlice.actions
 
 export default loadedDataSlice.reducer

@@ -1,18 +1,21 @@
-import { RootState } from '@/store/store'
+import { RootState } from '../../store/store'
 import { ChangeEventHandler, MouseEventHandler } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   addName,
   addPhone,
+  addEmail,
   addStudio,
-  addProcedure,
+  addService,
   addDate,
   addTime,
+  addServiceType,
 } from './form.slice'
-import dayjs, { Dayjs } from 'dayjs'
-import { LoadedDataType } from '@/pages/index.types'
-import { fetchSchedule } from '@/helpers/fetchSchedule'
-import { addLoadedData } from '@/pages/index.slice'
+import { Dayjs } from 'dayjs'
+import { DateTime, LoadedDataType } from '../../pages/index.types'
+import { fetchSchedule, postAppointment } from '../../helpers/fetch.helpers'
+import { addLoadedData, clearLoadedData } from '../../pages/index.slice'
+import { setIsModalOpen } from '../../store/settings.slice'
 
 // const nameRegex = /[A-Za-z]+/i
 // const phoneRegex = /([+-]?(?=\.\d|\d)(?:\d+)?(?:\.?\d*))(?:[Ee]([+-]?\d+))?/i
@@ -28,10 +31,16 @@ export const useChangeFormHook = () => {
   const handleChangePhone: ChangeEventHandler<HTMLInputElement> = (value) => {
     dispatch(addPhone(value.target.value))
   }
-  const handleSelectProcedure: ChangeEventHandler<HTMLInputElement> = (
+  const handleChangeEmail: ChangeEventHandler<HTMLInputElement> = (value) => {
+    dispatch(addEmail(value.target.value))
+  }
+  const handleSelectServiceType: ChangeEventHandler<HTMLInputElement> = (
     value
   ) => {
-    dispatch(addProcedure(value.target.value))
+    dispatch(addServiceType(value.target.value))
+  }
+  const handleSelectService: ChangeEventHandler<HTMLInputElement> = (value) => {
+    dispatch(addService(String(value.target.value)))
   }
   const handleSelectStudio: ChangeEventHandler<HTMLInputElement> = async (
     value
@@ -43,16 +52,10 @@ export const useChangeFormHook = () => {
     if (bookingForm.time) {
       dispatch(addTime(''))
     }
-    const loadedData: LoadedDataType | undefined = await fetchSchedule(
+    const loadedData: DateTime[] | undefined = await fetchSchedule(
       value.target.value
     )
-    dispatch(
-      addLoadedData(
-        loadedData || {
-          data: [],
-        }
-      )
-    )
+    dispatch(addLoadedData(loadedData || []))
   }
   const handleChangeDate = (date: Dayjs) => {
     dispatch(addDate(date.format('YYYY-MM-DD')))
@@ -62,35 +65,29 @@ export const useChangeFormHook = () => {
   }
 
   const handleSubmitForm: MouseEventHandler<HTMLButtonElement> = async () => {
-    const res = await fetch(
-      'https://sea-lion-app-3q9lj.ondigitalocean.app/appointment',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin':
-            'https://sea-lion-app-3q9lj.ondigitalocean.app/appointment',
-        },
-        body: JSON.stringify({
-          name: bookingForm.name,
-          phone: bookingForm.phone,
-          studio: bookingForm.studio,
-          service: bookingForm.procedure,
-          date: bookingForm.date,
-          time: bookingForm.time,
-        }),
-        // mode: 'no-cors',
-      }
+    const result: { number_appointment: number } = await postAppointment({
+      name: bookingForm.name,
+      phone: bookingForm.phone,
+      email: bookingForm.email,
+      studio: bookingForm.studio,
+      serviceType: bookingForm.serviceType,
+      service: bookingForm.service,
+      date: bookingForm.date,
+      time: bookingForm.time,
+    })
+    dispatch(
+      setIsModalOpen({ isOpen: true, appointment: result.number_appointment })
     )
-    // if (res.body)
-    const data = res.body
-    console.log(res)
+    const loadedData = await fetchSchedule('1')
+    dispatch(addLoadedData(loadedData || []))
   }
 
   return {
     handleChangeName,
     handleChangePhone,
-    handleSelectProcedure,
+    handleChangeEmail,
+    handleSelectServiceType,
+    handleSelectService,
     handleSelectStudio,
     handleChangeDate,
     handleChangeTime,

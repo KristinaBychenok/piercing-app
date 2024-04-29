@@ -1,0 +1,13 @@
+{
+  "form": {
+    "formHeader": "Feel free to reach out to me for any questions or opportunities!",
+    "nameField": "Name",
+    "phoneField": "Phone",
+    "emailField": "Email",
+    "serviceTypeField": "Service Type",
+    "serviceField": "Service",
+    "studioField": "Studio",
+    "timeField": "Time",
+    "formButton": "Book Now"
+  }
+}

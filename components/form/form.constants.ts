@@ -30,8 +30,11 @@ export const customFieldTheme = (outerTheme: Theme) =>
             '.MuiSelect-select': {
               color: 'var(--TextField-white)',
             },
-            'input:-internal-autofill-selected': {
-              backgroundColor: 'red',
+            '.MuiSelect-nativeInput': {
+              color: 'var(--TextField-white)',
+            },
+            '& svg': {
+              color: 'var(--TextField-white)',
             },
           },
         },
@@ -92,13 +95,29 @@ export const customFieldTheme = (outerTheme: Theme) =>
           },
         },
       },
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            color: 'var(--TextField-white)',
+            borderColor: 'var(--TextField-white)',
+            '&:hover': {
+              color: 'var(--TextField-white)',
+              borderColor: 'var(--TextField-brandBorderHoverColor)',
+            },
+            '&.Mui-disabled': {
+              color: 'grey',
+              borderColor: 'grey',
+            },
+          },
+        },
+      },
     },
   })
 
-export const procedures = [
-  { label: 'Pirsing Bridge - 1', value: 'Pirsing Bridge - 1' },
-  { label: 'Pirsing Bridge - 2', value: 'Pirsing Bridge - 2' },
-  { label: 'Pirsing Bridge - 3', value: 'Pirsing Bridge - 3' },
+export const services = [
+  { label: 'Pirsing Bridge - 1', value: '1' },
+  { label: 'Pirsing Bridge - 2', value: '2' },
+  { label: 'Pirsing Bridge - 3', value: '3' },
 ]
 export const studios = [
   { label: 'Hugona Kołłątaja 21', value: '1' },
