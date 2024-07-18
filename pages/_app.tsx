@@ -1,14 +1,21 @@
-import "@/styles/globals.css";
-import type { AppProps } from "next/app";
-import { Provider } from "react-redux";
+import '@/styles/globals.css'
+import type { AppProps } from 'next/app'
+import { Provider } from 'react-redux'
 import { store } from '../store/store'
-import { Wrapper } from "@/components/layouts/wrapper";
-import "./i18n";
+import { NextIntlClientProvider } from 'next-intl'
+import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Provider store={store} >
-      <Wrapper>
+  const router = useRouter()
+  return (
+    <NextIntlClientProvider
+      locale={router.locale}
+      timeZone="Europe/Vienna"
+      messages={pageProps.messages}
+    >
+      <Provider store={store}>
         <Component {...pageProps} />
-      </Wrapper>
-    </Provider>
+      </Provider>
+    </NextIntlClientProvider>
+  )
 }

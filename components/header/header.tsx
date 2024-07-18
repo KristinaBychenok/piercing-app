@@ -1,6 +1,11 @@
-import { useCallback, useMemo } from 'react'
-import { useTranslation } from 'react-i18next'
-// import { useTranslation } from 'next-i18next'
+import { useCallback, useState } from 'react'
+import { ContentWrapper } from '../layouts/contentWrapper'
+import MenuIcon from '@mui/icons-material/Menu'
+import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { Box, Menu, MenuItem } from '@mui/material'
+import { useTranslations } from 'next-intl'
+import { useRouter } from 'next/router'
 
 type LangsT = {
   code: string
@@ -10,48 +15,114 @@ type LangsT = {
 const langs: LangsT[] = [
   { code: 'en', lang: 'EN' },
   { code: 'pl', lang: 'PL' },
-  // { code: 'ru', lang: 'RU' },
 ]
 
-export const Header = () => {
-  const { i18n } = useTranslation()
+const menuItems = ['1', '2']
 
-  const changeLanguage = (lang: string) => {
-    i18n.changeLanguage(lang)
-  }
+export const Header = ({ isFooter }: { isFooter?: boolean }) => {
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null)
+  const t = useTranslations()
+  const { locale, route } = useRouter()
+  const dispatch = useDispatch()
 
   const liClassName = useCallback(
     (lang: LangsT) =>
-      `mx-3 p-1 cursor-pointer ${
-        lang.code === i18n.language ? 'bg-gray-500' : ''
+      `mx-1 tablet:mx-3 p-1 cursor-pointer text-black tablet:text-white font-sans font-inter ${
+        lang.code === locale ? 'font-super-bold' : 'font-basic'
       }`,
-    [i18n.language]
+    [locale]
   )
 
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget)
+  }
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
+  }
+
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center md:justify-between w-full md:px-8 xl:px-12">
-      <h1 className="text-2xl my-7">Darya Logo</h1>
-      <div className="hidden md:flex">
-        {/* <nav>
-          <ul className="flex flex-row">
-            <li className="pr-10">About me</li>
-            <li>Contacts</li>
+    <div
+      className={`w-full ${
+        isFooter ? 'border-t' : 'border-b'
+      } border-white border-solid`}
+    >
+      <ContentWrapper>
+        <div className="flex flex-row items-center justify-between w-full">
+          <Link href={'/'} className="text-2xl my-7 font-sans font-inter">
+            Darya Logo
+          </Link>
+          <Box className="hidden tablet:flex">
+            {menuItems.map((menuItem) => (
+              <Link
+                key={t(`header.menu.${menuItem}`)}
+                href={`/#${menuItem === '1' ? 'about' : 'contacts'}`}
+                className="px-5 my-[2px] text-white font-sans font-inter"
+              >
+                {t(`header.menu.${menuItem}`)}
+              </Link>
+            ))}
+          </Box>
+          <ul className="hidden tablet:flex flex-row">
+            {langs.map((lang) => {
+              return (
+                <li key={lang.code} className={liClassName(lang)}>
+                  <Link href={route} locale={lang.code}>
+                    {lang.lang}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
-        </nav> */}
-      </div>
-      <ul className="flex flex-row mb-5 md:my-7">
-        {langs.map((lang) => {
-          return (
-            <li
-              key={lang.code}
-              className={liClassName(lang)}
-              onClick={() => changeLanguage(lang.code)}
+
+          <Box className="flex tablet:hidden">
+            <div onClick={handleOpenUserMenu} className="flex w-fit h-fit">
+              <MenuIcon />
+            </div>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
             >
-              {lang.lang}
-            </li>
-          )
-        })}
-      </ul>
+              {menuItems.map((menuItem) => (
+                <MenuItem
+                  key={t(`header.menu.${menuItem}`)}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Link
+                    key={t(`header.menu.${menuItem}`)}
+                    href={`/#${menuItem === '1' ? 'about' : 'contacts'}`}
+                    className="font-sans font-inter"
+                  >
+                    {t(`header.menu.${menuItem}`)}
+                  </Link>
+                </MenuItem>
+              ))}
+              <ul className="flex flex-row items-center justify-center py-[6px]">
+                {langs.map((lang) => {
+                  return (
+                    <li key={lang.code} className={liClassName(lang)}>
+                      <Link href={route} locale={lang.code}>
+                        {lang.lang}
+                      </Link>
+                    </li>
+                  )
+                })}
+              </ul>
+            </Menu>
+          </Box>
+        </div>
+      </ContentWrapper>
     </div>
   )
 }

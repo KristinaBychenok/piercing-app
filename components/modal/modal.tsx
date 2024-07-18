@@ -1,42 +1,25 @@
 import { setIsModalOpen } from '../../store/settings.slice'
 import { RootState } from '../../store/store'
-import { Box, Modal, Typography } from '@mui/material'
-import { useCallback, useMemo } from 'react'
+import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { studios } from '../form/form.constants'
 import dayjs from 'dayjs'
 import { clearForm } from '../form/form.slice'
-import { useTranslation } from 'react-i18next'
-import { getServices } from '../form/form.helpers'
-
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-  color: 'black',
-}
+import { Box, Modal, Typography } from '@mui/material'
+import { useTranslations } from 'next-intl'
+import { useGetFormDataHook } from '../form/form.hooks'
 
 export const ModalComponent = () => {
+  const t = useTranslations()
   const isModalOpen = useSelector(
     (state: RootState) => state.settings.isModalOpen
   )
-  const bookingForm = useSelector((state: RootState) => state.bookingForm)
-  const loadedData = useSelector((state: RootState) => state.loadedData)
-  const { i18n } = useTranslation()
-
+  const bookingForm = useSelector(
+    (state: RootState) => state.bookingForm.bookingData
+  )
   const dispatch = useDispatch()
 
-  const services = useMemo(
-    () =>
-      getServices(loadedData.services, bookingForm?.serviceType, i18n.language),
-    [bookingForm?.serviceType, i18n.language, loadedData.services]
-  )
+  const { services } = useGetFormDataHook(false)
 
   const handleClose = useCallback(() => {
     dispatch(clearForm())
@@ -50,9 +33,9 @@ export const ModalComponent = () => {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box sx={style}>
+      <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-solid border-black-light bg-black-default p-6 text-black-light">
         <Typography id="modal-modal-title" variant="h5" component="h1">
-          Thank you for your booking! Administrator will contact you.
+          {t('bookingConfirmation.title')}
         </Typography>
         <Typography
           id="modal-modal-title"
@@ -60,29 +43,33 @@ export const ModalComponent = () => {
           component="h2"
           className="py-4"
         >
-          {`Your booking number: ${isModalOpen.appointment}`}
+          {t('bookingConfirmation.subTitle', {
+            number: isModalOpen.appointment,
+          })}
         </Typography>
         <div className="py-4">
-          <Typography id="modal-modal-title" variant="h7" component="h3">
-            Your Booking details:
+          <Typography id="modal-modal-title" variant="h6" component="h3">
+            {t('bookingConfirmation.detailsTitle')}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {`Service: ${
-              services.find(
+            {t('bookingConfirmation.service', {
+              service: services.find(
                 (service) => service.value.toString() === bookingForm.service
-              )?.label
-            }`}
+              )?.label,
+            })}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {`Studio address: ${
-              studios.find((studio) => studio.value === bookingForm.studio)
-                ?.label
-            }`}
+            {t('bookingConfirmation.address', {
+              address: studios.find(
+                (studio) => studio.value === bookingForm.studio
+              )?.label,
+            })}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {`Date: ${dayjs(new Date('2024-04-26')).format('DD MMM YYYY')} ${
-              bookingForm.time
-            }`}
+            {t('bookingConfirmation.date', {
+              date: dayjs(new Date(bookingForm.date)).format('DD MMM YYYY'),
+              time: bookingForm.time,
+            })}
           </Typography>
         </div>
       </Box>

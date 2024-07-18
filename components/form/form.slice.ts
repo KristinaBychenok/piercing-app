@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-export type FormStateT = {
+export type BookingDataT = {
   name: string
   phone: string
   email: string
@@ -9,17 +9,27 @@ export type FormStateT = {
   service: string
   date: string
   time: string
+  message: string
+}
+
+export type FormStateT = {
+  bookingData: BookingDataT
+  backup: BookingDataT
 }
 
 const initState: FormStateT = {
-  name: '',
-  phone: '',
-  email: '',
-  studio: '',
-  serviceType: 'ears',
-  service: '',
-  date: '',
-  time: '',
+  bookingData: {
+    name: '',
+    phone: '',
+    email: '',
+    studio: '',
+    serviceType: 'ears',
+    service: '',
+    date: '',
+    time: '',
+    message: '',
+  },
+  backup: {} as BookingDataT,
 }
 
 export const bookingFormSlice = createSlice({
@@ -27,38 +37,57 @@ export const bookingFormSlice = createSlice({
   initialState: initState,
   reducers: {
     addName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload
+      state.bookingData.name = action.payload
     },
     addPhone: (state, action: PayloadAction<string>) => {
-      state.phone = action.payload
+      state.bookingData.phone = action.payload
     },
     addEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload
+      state.bookingData.email = action.payload
     },
     addStudio: (state, action: PayloadAction<string>) => {
-      state.studio = action.payload
+      state.bookingData.studio = action.payload
     },
     addServiceType: (state, action: PayloadAction<string>) => {
-      state.serviceType = action.payload
+      state.bookingData.serviceType = action.payload
     },
     addService: (state, action: PayloadAction<string>) => {
-      state.service = action.payload
+      state.bookingData.service = action.payload
     },
     addDate: (state, action: PayloadAction<string>) => {
-      state.date = action.payload
+      state.bookingData.date = action.payload
     },
     addTime: (state, action: PayloadAction<string>) => {
-      state.time = action.payload
+      state.bookingData.time = action.payload
+    },
+    addMessage: (state, action: PayloadAction<string>) => {
+      state.bookingData.message = action.payload
     },
     clearForm: (state) => {
-      state.name = ''
-      state.phone = ''
-      state.email = ''
-      state.serviceType = ''
-      state.service = ''
-      state.studio = '1'
-      state.date = ''
-      state.time = ''
+      state.bookingData.name = ''
+      state.bookingData.phone = ''
+      state.bookingData.email = ''
+      state.bookingData.serviceType = ''
+      state.bookingData.service = ''
+      state.bookingData.studio = '1'
+      state.bookingData.date = ''
+      state.bookingData.time = ''
+      state.bookingData.message = ''
+      state.backup = {} as BookingDataT
+    },
+    addAppointmentData: (state, action: PayloadAction<BookingDataT>) => {
+      state.bookingData.name = action.payload.name
+      state.bookingData.phone = action.payload.phone
+      state.bookingData.email = action.payload.email
+      state.bookingData.serviceType = action.payload.serviceType
+      state.bookingData.service = action.payload.service
+      state.bookingData.studio = action.payload.studio
+      state.bookingData.date = action.payload.date
+      state.bookingData.time = action.payload.time
+      state.bookingData.message = action.payload.message
+      state.backup = {
+        ...action.payload,
+      }
     },
   },
 })
@@ -72,7 +101,9 @@ export const {
   addService,
   addDate,
   addTime,
+  addMessage,
   clearForm,
+  addAppointmentData,
 } = bookingFormSlice.actions
 
 export default bookingFormSlice.reducer

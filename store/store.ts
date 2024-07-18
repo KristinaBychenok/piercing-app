@@ -1,5 +1,5 @@
 import formReducer from '../components/form/form.slice'
-import loadedDataReducer from '../pages/index.slice'
+import loadedDataReducer from './index.slice'
 import settingsReducer from '../store/settings.slice'
 import { configureStore } from '@reduxjs/toolkit'
 

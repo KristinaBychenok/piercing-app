@@ -1,0 +1,112 @@
+{
+  "header": {
+    "menu": {
+      "1": "About me",
+      "2": "Contacts"
+    }
+  },
+  "main": {
+    "title": "Self-expression and Beauty",
+    "subTitle": "Piercing artist",
+    "button": "Book Now",
+    "text": "Explore new facets of your style with Darya"
+  },
+  "about": {
+    "hello": "Hello!",
+    "text": "My name is Dasha, and I am delighted to welcome you to my world of piercing and self-expression. With a great passion for art and many years of experience in the beauty industry, I create unique and stylish piercings, helping my clients unveil new facets of their style. My mission is not just to adorn, but to help people express their individuality through amazing and creative piercings. With special attention to detail and safety, each piercing is created with love and care so that you can feel confident and stylish. Let me help you discover new possibilities for self-expression and give your look a unique character. Let's create something amazing together!",
+    "bye": "With love, Darya",
+    "button": "Book Now"
+  },
+  "form": {
+    "formHeader": "Feel free to reach out to me for any questions or opportunities!",
+    "nameField": "Name",
+    "phoneField": "Phone",
+    "emailField": "Email",
+    "serviceTypeField": "Service Type",
+    "serviceField": "Service",
+    "studioField": "Studio",
+    "timeField": "Time",
+    "messageField": "Message",
+    "messageFieldPlaceholder": "Start typing...",
+    "formButton": "Book Now",
+    "alert": {
+      "time": "Please select a service and a date."
+    }
+  },
+  "services": {
+    "ears": {
+      "title": "Ears",
+      "lobe": "Lobe",
+      "upper_lobe": "Upper lobe",
+      "helix": "Helix",
+      "conch": "Conch",
+      "industrial": "Industrial",
+      "tragus": "Tragus",
+      "rook": "Rook",
+      "daith": "Daith",
+      "snug": "Snug",
+      "antitragus": "Antitragus",
+      "flat": "Flat"
+    },
+    "nose": {
+      "title": "Nose",
+      "septum": "Septum",
+      "nostril": "Nostril",
+      "bridge": "Bridge"
+    },
+    "eyebrow": {
+      "title": "Eyebrow",
+      "eyebrow": "Eyebrow"
+    },
+    "navel": {
+      "title": "Navel",
+      "navel": "Navel"
+    },
+    "lips_mouth": {
+      "title": "Lips & mouth",
+      "labret": "Labret",
+      "vertical_labret": "Vertical labret",
+      "medusa": "Medusa",
+      "smile": "Smile"
+    },
+    "18+": {
+      "title": "18+",
+      "standart": "Standart nipple",
+      "double": "Double nipple"
+    },
+    "surf_dermal": {
+      "title": "Surface & microdermal",
+      "surface": "Surface",
+      "microdermal": "Microdermal"
+    },
+    "other": {
+      "title": "Other",
+      "consultation": "Consultation",
+      "downsize": "Downsize",
+      "changing_jewelry": "Changing jewelry"
+    }
+  },
+  "bookingConfirmation": {
+    "title": "Thank you for your booking! Administrator will contact you.",
+    "subTitle": "Your booking number: {number}",
+    "detailsTitle": "Your Booking details:",
+    "service": "Service: {service}",
+    "address": "Studio address: {address}",
+    "date": "Date: {date} {time}"
+  },
+  "reschedule": {
+    "title": "Reschedule an appointment",
+    "subTitle": "You can reschedule or cancel the appointment no later than 24 hours before the scheduled time.",
+    "buttonSave": "Save Changes",
+    "buttonDelete": "Delete appointment",
+    "buttonReturn": "Return to the main page",
+    "error": "The appointment could not be found.",
+    "successfullyRescheduled": "Booking has been successfully rescheduled",
+    "successfullyCanceld": "Booking has been successfully canceld",
+    "details": {
+      "title": "Details of Your Reservation",
+      "serviceTypeField": "Service Type",
+      "serviceField": "Service"
+    }
+  }
+}
