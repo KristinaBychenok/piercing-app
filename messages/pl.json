@@ -1,0 +1,112 @@
+{
+  "header": {
+    "menu": {
+      "1": "O mnie",
+      "2": "Kontakty"
+    }
+  },
+  "main": {
+    "title": "Wyrażanie siebie i Piękno",
+    "subTitle": "Artysta piercingu",
+    "button": "Zarezerwuj teraz",
+    "text": "Poznaj nowe aspekty swojego stylu z Darią"
+  },
+  "about": {
+    "hello": "Cześć!",
+    "text": "Nazywam się Dasha i z radością witam was w moim świecie piercingu i wyrażania siebie. Z wielką pasją do sztuki i wieloletnim doświadczeniem w branży kosmetycznej tworzę unikalne i stylowe piercingi, pomagając moim klientom odkrywać nowe aspekty swojego stylu. Moim celem jest nie tylko ozdabianie, ale także pomaganie ludziom w wyrażaniu ich indywidualności poprzez niesamowite i kreatywne piercingi. Z wyjątkową dbałością o szczegóły i bezpieczeństwo, każdy piercing tworzony jest z miłością i troską, abyście mogli czuć się pewnie i stylowo. Pozwólcie mi pomóc wam odkryć nowe możliwości wyrażania siebie i nadać waszemu wyglądowi niepowtarzalny charakter. Stwórzmy razem coś niesamowitego!",
+    "bye": "Z miłością, Darya",
+    "button": "Zarezerwuj teraz"
+  },
+  "form": {
+    "formHeader": "Skontaktuj się ze mną w przypadku jakichkolwiek pytań lub możliwości!",
+    "nameField": "Imię",
+    "phoneField": "Telefon",
+    "emailField": "Email",
+    "serviceTypeField": "Rodzaj usługi",
+    "serviceField": "Usługa",
+    "studioField": "Studio",
+    "timeField": "Czas",
+    "messageField": "Wiadomość",
+    "messageFieldPlaceholder": "Zacznij pisać...",
+    "formButton": "Rezerwuj teraz",
+    "alert": {
+      "time": "Proszę wybrać usługę i datę."
+    }
+  },
+  "services": {
+    "ears": {
+      "title": "Uszy",
+      "lobe": "Lobe",
+      "upper_lobe": "Upper lobe",
+      "helix": "Helix",
+      "conch": "Conch",
+      "industrial": "Industrial",
+      "tragus": "Tragus",
+      "rook": "Rook",
+      "daith": "Daith",
+      "snug": "Snug",
+      "antitragus": "Antitragus",
+      "flat": "Flat"
+    },
+    "nose": {
+      "title": "Nos",
+      "septum": "Septum",
+      "nostril": "Nostril",
+      "bridge": "Bridge"
+    },
+    "eyebrow": {
+      "title": "Brew",
+      "eyebrow": "Brew"
+    },
+    "navel": {
+      "title": "Pępek",
+      "navel": "Pępek"
+    },
+    "lips_mouth": {
+      "title": "Wargi & jama ustna",
+      "labret": "Labret",
+      "vertical_labret": "Vertical labret",
+      "medusa": "Medusa",
+      "smile": "Smile"
+    },
+    "18+": {
+      "title": "18+",
+      "standart": "Standart nipple",
+      "double": "Double nipple"
+    },
+    "surf_dermal": {
+      "title": "Surface & microdermal",
+      "surface": "Surface",
+      "microdermal": "Microdermal"
+    },
+    "other": {
+      "title": "Inne",
+      "consultation": "Konsultacja",
+      "downsize": "Downsize",
+      "changing_jewelry": "Wymiana kolczyka"
+    }
+  },
+  "bookingConfirmation": {
+    "title": "Dziękujemy za rezerwację! Administrator skontaktuje się z Tobą.",
+    "subTitle": "Twój numer rezerwacji: {number}",
+    "detailsTitle": "Szczegóły Twojej rezerwacji:",
+    "service": "Usługa: {service}",
+    "address": "Adres studia: {address}",
+    "date": "Data: {date} {time}"
+  },
+  "reschedule": {
+    "title": "Przełóż wizytę",
+    "subTitle": "Możesz przełożyć lub anulować wizytę nie później niż 24 godziny przed wyznaczonym terminem.",
+    "buttonSave": "Zapisz zmiany",
+    "buttonDelete": "Usuń",
+    "buttonReturn": "Powrót do strony głównej",
+    "error": "Nie znaleziono wizyty.",
+    "successfullyRescheduled": "Rezerwacja została pomyślnie przełożona",
+    "successfullyCanceld": "Rezerwacja została pomyślnie anulowana",
+    "details": {
+      "title": "Szczegóły Twojej Rezerwacji",
+      "serviceTypeField": "Rodzaj usługi",
+      "serviceField": "Usługa"
+    }
+  }
+}

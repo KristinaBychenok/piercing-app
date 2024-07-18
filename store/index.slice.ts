@@ -23,10 +23,7 @@ export const loadedDataSlice = createSlice({
   },
 })
 
-export const {
-  addLoadedData,
-  addServices,
-  clearLoadedData,
-} = loadedDataSlice.actions
+export const { addLoadedData, addServices, clearLoadedData } =
+  loadedDataSlice.actions
 
 export default loadedDataSlice.reducer

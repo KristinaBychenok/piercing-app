@@ -25,9 +25,10 @@ export const datePickerStyles = {
   '& .MuiPickersDay-root.Mui-disabled': {
     color: 'grey',
   },
-  '& .MuiButtonBase-root.Mui-disabled.MuiPickersDay-root.Mui-disabled.MuiPickersDay-dayWithMargin': {
-    color: 'grey',
-  },
+  '& .MuiButtonBase-root.Mui-disabled.MuiPickersDay-root.Mui-disabled.MuiPickersDay-dayWithMargin':
+    {
+      color: 'grey',
+    },
   // hidden day
   '& .MuiPickersDay-hiddenDaySpacingFiller': {
     color: 'grey',

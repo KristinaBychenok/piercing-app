@@ -7,6 +7,13 @@ export const customFieldTheme = (outerTheme: Theme) =>
       mode: outerTheme.palette.mode,
     },
     components: {
+      // MuiFormControlLabel: {
+      //   styleOverrides: {
+      //     root: {
+      //       width: '100%',
+      //     },
+      //   },
+      // },
       MuiTextField: {
         styleOverrides: {
           root: {
@@ -21,11 +28,23 @@ export const customFieldTheme = (outerTheme: Theme) =>
             '& input.Mui-focused': {
               color: 'var(--TextField-white)',
             },
+            '& input.Mui-disabled': {
+              color: 'var(--TextField-gray)',
+            },
+            '& textarea': {
+              color: 'var(--TextField-white)',
+            },
+            '& textarea.Mui-disabled': {
+              color: 'var(--TextField-gray)',
+            },
             '& label': {
               color: 'var(--TextField-gray)',
             },
             '& label.Mui-focused': {
               color: 'var(--TextField-white)',
+            },
+            '& label.Mui-disabled': {
+              color: 'var(--TextField-gray)',
             },
             '.MuiSelect-select': {
               color: 'var(--TextField-white)',
@@ -52,6 +71,11 @@ export const customFieldTheme = (outerTheme: Theme) =>
             [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
               // borderColor: 'var(--TextField-white)',
               border: '2px solid var(--TextField-white)',
+            },
+            [`&.Mui-disabled .${outlinedInputClasses.notchedOutline}`]: {
+              // borderColor: 'var(--TextField-white)',
+              border: '2px solid var(--TextField-gray)',
+              color: 'var(--TextField-gray)',
             },
           },
         },
@@ -83,6 +107,11 @@ export const customFieldTheme = (outerTheme: Theme) =>
             '&.Mui-focused:after': {
               borderBottom: '2px solid var(--TextField-white)',
             },
+            '&.Mui-disabled': {
+              // borderColor: 'var(--TextField-white)',
+              border: '2px solid var(--TextField-gray)',
+              color: 'var(--TextField-gray)',
+            },
           },
         },
       },
@@ -111,14 +140,17 @@ export const customFieldTheme = (outerTheme: Theme) =>
           },
         },
       },
+      MuiPopover: {
+        styleOverrides: {
+          paper: {
+            height: '200px',
+            backgroundColor: '#B2BAC2',
+          },
+        },
+      },
     },
   })
 
-export const services = [
-  { label: 'Pirsing Bridge - 1', value: '1' },
-  { label: 'Pirsing Bridge - 2', value: '2' },
-  { label: 'Pirsing Bridge - 3', value: '3' },
-]
 export const studios = [
   { label: 'Hugona Kołłątaja 21', value: '1' },
   { label: 'Kuźnicza 25', value: '2' },

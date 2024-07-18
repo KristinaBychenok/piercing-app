@@ -1,7 +1,11 @@
-import { DateTime, LoadedServicesType } from '../../pages/index.types'
+import { DateTime, LoadedServicesType } from '../../store/index.types'
 import dayjs from 'dayjs'
 
-export const getTimes = (bookingFormDate: string, loadedData: DateTime[]) => {
+export const getTimes = (
+  bookingFormDate: string,
+  loadedData: DateTime[],
+  isEdit: boolean
+) => {
   const selectedDate = bookingFormDate
 
   const loadedDate = loadedData.find((item) => item.date === selectedDate)
@@ -39,7 +43,7 @@ export const getTimes = (bookingFormDate: string, loadedData: DateTime[]) => {
     }
   }
 
-  if (loadedDate) {
+  if (loadedDate && !isEdit) {
     loadedDate.busyTimes.forEach((time) => {
       avaliableTimes = avaliableTimes.filter((item) => item !== time)
     })
@@ -50,17 +54,17 @@ export const getTimes = (bookingFormDate: string, loadedData: DateTime[]) => {
 
 export const getServices = (
   services: LoadedServicesType[],
-  serviseType: string,
-  lang: string
+  serviseType: string
 ) => {
   return services
     .filter((service) => service.type === serviseType)
     .map((service) => {
       return {
         value: service.id,
-        label: `${lang === 'en' ? service.name_eng : service.name_pl} - ${
-          service.cost
-        }zl - ${service.amt_time}min`,
+        name: service.name,
+        type: service.type,
+        cost: service.cost,
+        time: service.amt_time,
       }
     })
 }
@@ -77,4 +81,30 @@ export const getServiceTypes = (services: LoadedServicesType[]) => {
     }
     return acc
   }, [] as { value: string; label: string }[])
+}
+
+export const getDeletedTimes = (times: string[], duration: number) => {
+  const deletedTimes: string[] = []
+
+  times.forEach((timeString) => {
+    const count = Math.ceil(duration / 15)
+
+    // Convert time string to a Date object
+    let date = new Date()
+    let [hours, minutes] = timeString.split(':').map(Number)
+    date.setHours(hours, minutes, 0, 0)
+
+    // Subtract the duration (in milliseconds) count times
+    for (let i = 1; i < count; i++) {
+      date.setTime(date.getTime() - 15 * 60000)
+
+      // Convert the Date object back to a time string
+      let newHours = String(date.getHours()).padStart(2, '0')
+      let newMinutes = String(date.getMinutes()).padStart(2, '0')
+      let newTimeString = `${newHours}:${newMinutes}`
+      deletedTimes.push(newTimeString)
+    }
+  })
+
+  return deletedTimes
 }

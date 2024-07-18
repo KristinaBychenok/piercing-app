@@ -5,7 +5,7 @@ type SettingsSliceT = {
     isOpen: boolean
     appointment: number | null
   }
-  language: string
+  isLoading: boolean
 }
 
 const initState: SettingsSliceT = {
@@ -13,7 +13,7 @@ const initState: SettingsSliceT = {
     isOpen: false,
     appointment: null,
   },
-  language: 'en',
+  isLoading: false,
 }
 
 export const settingsSlice = createSlice({
@@ -29,9 +29,12 @@ export const settingsSlice = createSlice({
     ) => {
       state.isModalOpen = action.payload
     },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload
+    },
   },
 })
 
-export const { setIsModalOpen } = settingsSlice.actions
+export const { setIsModalOpen, setIsLoading } = settingsSlice.actions
 
 export default settingsSlice.reducer
