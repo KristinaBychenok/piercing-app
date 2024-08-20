@@ -1,9 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { DateTime, LoadedDataType, LoadedServicesType } from './index.types'
+import {
+  DateTime,
+  LoadedDataType,
+  LoadedServicesType,
+  LoadedStudiosType,
+} from './index.types'
 
 const initState: LoadedDataType = {
   data: [],
   services: [],
+  studios: [],
 }
 
 export const loadedDataSlice = createSlice({
@@ -16,6 +22,9 @@ export const loadedDataSlice = createSlice({
     addServices: (state, action: PayloadAction<LoadedServicesType[]>) => {
       state.services = action.payload
     },
+    addStudios: (state, action: PayloadAction<LoadedStudiosType[]>) => {
+      state.studios = action.payload
+    },
     clearLoadedData: (state) => {
       state.data = []
       state.services = []
@@ -23,7 +32,7 @@ export const loadedDataSlice = createSlice({
   },
 })
 
-export const { addLoadedData, addServices, clearLoadedData } =
+export const { addLoadedData, addServices, addStudios, clearLoadedData } =
   loadedDataSlice.actions
 
 export default loadedDataSlice.reducer

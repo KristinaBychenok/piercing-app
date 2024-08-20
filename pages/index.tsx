@@ -2,41 +2,69 @@ import {
   DateTime,
   LoadedDataType,
   LoadedServicesType,
+  LoadedStudiosType,
 } from '../store/index.types'
-import { useDispatch } from 'react-redux'
-import { useEffect, useState } from 'react'
-import { addLoadedData, addServices } from '../store/index.slice'
-import { fetchSchedule, fetchServices } from '../helpers/fetch.helpers'
-import { ModalComponent } from '../components/modal/modal'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { addLoadedData, addServices, addStudios } from '../store/index.slice'
+import {
+  fetchSchedule,
+  fetchServices,
+  fetchStudios,
+} from '../helpers/fetch.helpers'
+import { BookingConfirmationModal } from '../components/modals/bookingConfirmation'
 import { addStudio } from '../components/form/form.slice'
 import { Main } from '../components/sections/main/main'
 import { About } from '../components/sections/about/about'
-import { Contacts } from '../components/sections/contacts/contacts'
+import { Booking } from '../components/sections/booking/booking'
 import { Wrapper } from '../components/layouts/wrapper'
 import { GetStaticPropsContext } from 'next'
+import { RootState } from '../store/store'
+import { Contacts } from '../components/sections/contacts/contacts'
 
 export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
   const dispatch = useDispatch()
+  const bookingForm = useSelector(
+    (state: RootState) => state.bookingForm.bookingData
+  )
+  const studios = useSelector((state: RootState) => state.loadedData.studios)
 
   useEffect(() => {
-    dispatch(addLoadedData(loadedData.data))
     dispatch(addServices(loadedData.services))
-    dispatch(addStudio('1'))
-  }, [loadedData.data, loadedData.services])
+    dispatch(addStudios(loadedData.studios))
+
+    const loadedScheduleData = async () => {
+      const studioId = bookingForm.studio || String(loadedData.studios[0].id)
+
+      const data: DateTime[] = (await fetchSchedule(studioId)) as DateTime[]
+      dispatch(addLoadedData(data))
+      dispatch(addStudio(studioId))
+    }
+    loadedScheduleData()
+  }, [
+    bookingForm.studio,
+    dispatch,
+    loadedData.services,
+    loadedData.studios,
+    studios,
+  ])
 
   return (
     <Wrapper>
       <Main />
+      <Booking />
       <About />
       <Contacts />
-      <ModalComponent />
+      <BookingConfirmationModal />
     </Wrapper>
   )
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const loadedData: DateTime[] | undefined = await fetchSchedule('1')
-  const loadedServices: LoadedServicesType[] | undefined = await fetchServices()
+  const loadedServices: LoadedServicesType[] =
+    (await fetchServices()) as LoadedServicesType[]
+  const loadedStudios: LoadedStudiosType[] =
+    (await fetchStudios()) as LoadedStudiosType[]
 
   // By returning { props: { loadedData } }, the Home component
   // will receive `loadedData` as a prop at build time
@@ -44,8 +72,8 @@ export async function getStaticProps(context: GetStaticPropsContext) {
     props: {
       messages: (await import(`../messages/${context.locale}.json`)).default,
       loadedData: {
-        data: loadedData,
         services: loadedServices,
+        studios: loadedStudios,
       },
     },
   }

@@ -1,18 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 type SettingsSliceT = {
-  isModalOpen: {
-    isOpen: boolean
-    appointment: number | null
-  }
+  isModalOpen: boolean
   isLoading: boolean
 }
 
 const initState: SettingsSliceT = {
-  isModalOpen: {
-    isOpen: false,
-    appointment: null,
-  },
+  isModalOpen: false,
   isLoading: false,
 }
 
@@ -20,13 +14,7 @@ export const settingsSlice = createSlice({
   name: 'settingsSlice',
   initialState: initState,
   reducers: {
-    setIsModalOpen: (
-      state,
-      action: PayloadAction<{
-        isOpen: boolean
-        appointment: number | null
-      }>
-    ) => {
+    setIsModalOpen: (state, action: PayloadAction<boolean>) => {
       state.isModalOpen = action.payload
     },
     setIsLoading: (state, action: PayloadAction<boolean>) => {

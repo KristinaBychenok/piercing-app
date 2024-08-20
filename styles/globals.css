@@ -19,6 +19,8 @@
 body {
   color: #ffffff;
   background-color: #1e1e1e;
+  overflow-x: hidden;
+  width: 100vh;
 }
 
 input:-webkit-autofill {
@@ -30,5 +32,17 @@ input:-webkit-autofill {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer components {
+  .button {
+    @apply border border-white border-solid py-3 px-14 text-center font-inter font-basic text-14 text-white;
+  }
+  .button:hover {
+    @apply border border-yellow-light border-solid py-3 px-14 text-center font-inter font-basic text-14 text-yellow-light;
+  }
+  .button:active {
+    @apply border border-yellow-default border-solid py-3 px-14 text-center font-inter font-basic text-14 text-yellow-default;
   }
 }

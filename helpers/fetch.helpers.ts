@@ -1,10 +1,9 @@
 import { BookingDataT } from '../components/form/form.slice'
-import { DateTime, LoadedServicesType } from '../store/index.types'
-
-export type AppointmentDataT = Omit<BookingDataT, 'serviceType'> & {
-  id: string
-  error_message?: string
-}
+import {
+  DateTime,
+  LoadedServicesType,
+  LoadedStudiosType,
+} from '../store/index.types'
 
 export const fetchSchedule = async (studio: string) => {
   try {
@@ -32,8 +31,21 @@ export const fetchServices = async () => {
   }
 }
 
+export const fetchStudios = async () => {
+  try {
+    const res = await fetch(
+      `https://sea-lion-app-3q9lj.ondigitalocean.app/studios`
+    )
+    const loadedStudios: LoadedStudiosType[] = await res.json()
+
+    return loadedStudios
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const postAppointment = async (
-  bookingForm: BookingDataT,
+  bookingForm: Omit<BookingDataT, 'acceptAgreement' | 'appointmentId'>,
   lang: string
 ) => {
   try {
@@ -45,14 +57,14 @@ export const postAppointment = async (
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: bookingForm.name,
-          phone: bookingForm.phone,
-          email: bookingForm.email,
+          name: bookingForm.name.value,
+          phone: bookingForm.phone.value,
+          email: bookingForm.email.value,
           studio: bookingForm.studio,
           service: bookingForm.service,
           date: bookingForm.date,
           time: bookingForm.time,
-          message: bookingForm.message,
+          message: bookingForm.message.value,
           lang: lang,
         }),
       }
@@ -63,13 +75,28 @@ export const postAppointment = async (
   }
 }
 
+export type GetAppointmentDataT = {
+  name: string
+  phone: string
+  email: string
+  studio: string
+  serviceType: string
+  service: string
+  date: string
+  time: string
+  message: string
+  id: string
+  error_message?: string
+  lang: string
+}
+
 export const getAppointment = async (appointmentId: string) => {
   try {
     const res = await fetch(
       `https://sea-lion-app-3q9lj.ondigitalocean.app/appointment/${appointmentId}`
     )
 
-    const loadedAppointment: AppointmentDataT = await res.json()
+    const loadedAppointment: GetAppointmentDataT = await res.json()
 
     return loadedAppointment
   } catch (error) {
@@ -87,7 +114,8 @@ type editAppointmentDataT = {
 }
 export const editAppointment = async (
   bookingForm: editAppointmentDataT,
-  appointmentId: string
+  appointmentId: string,
+  lang: string
 ) => {
   try {
     const res = await fetch(
@@ -103,6 +131,7 @@ export const editAppointment = async (
           date: bookingForm.date,
           time: bookingForm.time,
           message: bookingForm.message,
+          lang: lang,
         }),
       }
     )

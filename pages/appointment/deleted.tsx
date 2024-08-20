@@ -4,26 +4,66 @@ import { Button } from '../../components/buttons/button'
 import { Typography } from '@mui/material'
 import { GetStaticPropsContext } from 'next'
 import { useTranslations } from 'next-intl'
+import { useCallback } from 'react'
+import { clearForm } from '../../components/form/form.slice'
+import { useDispatch } from 'react-redux'
+import Link from 'next/link'
+import Image from 'next/image'
+import { Logo } from '../../components/logo/logo'
 
 export default function Deleted() {
   const t = useTranslations()
 
+  const dispatch = useDispatch()
+
+  const onClickHandler = useCallback(() => {
+    dispatch(clearForm())
+  }, [dispatch])
+
   return (
-    <>
-      <Header />
+    <div className="flex flex-col w-full h-fit">
+      <div
+        className={`flex w-full h-[1px] bg-white absolute top-[122px]`}
+      ></div>
       <ContentWrapper>
-        <div className="mt-16">
-          <Typography
-            variant="h2"
-            className="font-inter font-basic pb-8"
-            fontSize={32}
+        <div className="flex flex-col w-full mx-auto items-center">
+          <Link
+            href={'/'}
+            className="text-2xl my-7 font-sans font-inter w-full"
+            onClick={onClickHandler}
           >
-            {t('reschedule.successfullyCanceld')}
-          </Typography>
-          <Button name={t('reschedule.buttonReturn')} href="/" />
+            <Logo />
+          </Link>
+
+          <div className="flex flex-col pt-16 w-[1000px]">
+            <Typography
+              variant="h2"
+              className="font-inter font-basic pb-8"
+              fontSize={32}
+            >
+              {t('reschedule.successfullyCanceld.title')}
+            </Typography>
+            <Typography className="font-inter font-light mb-10" fontSize={17}>
+              {t('reschedule.successfullyCanceld.subtitle')}
+            </Typography>
+            <Button
+              name={t('reschedule.buttonReturn')}
+              href="/"
+              onClick={onClickHandler}
+            />
+          </div>
+          <div className="flex w-full h-[588px] mt-16 mb-6 overflow-hidden items-center justify-center">
+            <Image
+              src={'/canceld.jpg'}
+              alt="canceld-image"
+              width={1000}
+              height={588}
+              className="overflow-auto"
+            />
+          </div>
         </div>
       </ContentWrapper>
-    </>
+    </div>
   )
 }
 
