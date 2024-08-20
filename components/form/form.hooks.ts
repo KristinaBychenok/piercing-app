@@ -17,6 +17,8 @@ import {
   addServiceType,
   addMessage,
   clearForm,
+  addAcceptAgreement,
+  addAppointmentId,
 } from './form.slice'
 import { Dayjs } from 'dayjs'
 import { DateTime } from '../../store/index.types'
@@ -29,10 +31,14 @@ import {
 import { addLoadedData } from '../../store/index.slice'
 import { setIsLoading, setIsModalOpen } from '../../store/settings.slice'
 import {
+  checkRegExpField,
+  emailRegExp,
   getDeletedTimes,
   getServiceTypes,
   getServices,
   getTimes,
+  nameRegExp,
+  phoneRegExp,
 } from './form.helpers'
 import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
@@ -42,13 +48,18 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
     (state: RootState) => state.bookingForm.bookingData
   )
   const backup = useSelector((state: RootState) => state.bookingForm.backup)
+  const isLoading = useSelector((state: RootState) => state.settings.isLoading)
 
   const dispatch = useDispatch()
   const { locale, push } = useRouter()
 
   const handleChangeName: ChangeEventHandler<HTMLInputElement> = useCallback(
     (value) => {
-      dispatch(addName(value.target.value))
+      const isValid = value.target.value
+        ? checkRegExpField(value.target.value, nameRegExp) &&
+          value.target.value.length <= 50
+        : true
+      dispatch(addName({ value: value.target.value, isValid }))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -56,14 +67,22 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
 
   const handleChangePhone: ChangeEventHandler<HTMLInputElement> = useCallback(
     (value) => {
-      dispatch(addPhone(value.target.value))
+      const isValid = value.target.value
+        ? checkRegExpField(value.target.value, phoneRegExp) &&
+          value.target.value.length <= 12
+        : true
+      dispatch(addPhone({ value: value.target.value, isValid }))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
   const handleChangeEmail: ChangeEventHandler<HTMLInputElement> = useCallback(
     (value) => {
-      dispatch(addEmail(value.target.value))
+      const isValid = value.target.value
+        ? checkRegExpField(value.target.value, emailRegExp) &&
+          value.target.value.length <= 50
+        : true
+      dispatch(addEmail({ value: value.target.value, isValid }))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
@@ -115,16 +134,27 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
   )
   const handleChangeMessage: ChangeEventHandler<HTMLInputElement> = useCallback(
     (value) => {
-      dispatch(addMessage(value.target.value))
+      const isValid = value.target.value
+        ? value.target.value.length <= 500
+        : true
+      dispatch(addMessage({ value: value.target.value, isValid }))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []
   )
+  const handleChangeAcceptAgreement: ChangeEventHandler<HTMLInputElement> =
+    useCallback(
+      (value) => {
+        dispatch(addAcceptAgreement())
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      []
+    )
 
   const handleSubmitForm: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
       dispatch(setIsLoading(true))
-      const result: { number_appointment: number } = await postAppointment(
+      const result: { number_appointment: string } = await postAppointment(
         {
           name: bookingForm.name,
           phone: bookingForm.phone,
@@ -138,12 +168,11 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
         },
         locale || 'en'
       )
-      dispatch(
-        setIsModalOpen({ isOpen: true, appointment: result.number_appointment })
-      )
-      const loadedData = await fetchSchedule('1')
-      dispatch(addLoadedData(loadedData || []))
-      dispatch(setIsLoading(false))
+      if (!!result.number_appointment) {
+        dispatch(setIsModalOpen(true))
+        dispatch(addAppointmentId(result.number_appointment))
+        dispatch(setIsLoading(false))
+      }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
       bookingForm.date,
@@ -160,14 +189,18 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
 
   const isBookButtonDisable = useMemo(() => {
     const isBookingFormInvalid =
-      !bookingForm.name ||
-      !bookingForm.phone ||
-      !bookingForm.email ||
+      !bookingForm.name.value ||
+      !bookingForm.name.isValid ||
+      !bookingForm.phone.value ||
+      !bookingForm.phone.isValid ||
+      !bookingForm.email.value ||
+      !bookingForm.email.isValid ||
       !bookingForm.service ||
       !bookingForm.serviceType ||
       !bookingForm.studio ||
       !bookingForm.date ||
-      !bookingForm.time
+      !bookingForm.time ||
+      !bookingForm.message.isValid
 
     const rescheduleFormInvalid =
       isBookingFormInvalid ||
@@ -175,20 +208,27 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
         bookingForm.studio === backup.studio &&
         bookingForm.date === backup.date &&
         bookingForm.time === backup.time &&
-        bookingForm.message === backup.message)
+        bookingForm.message.value === backup.message.value)
 
-    return isEdit ? rescheduleFormInvalid : isBookingFormInvalid
+    return isEdit
+      ? rescheduleFormInvalid
+      : isBookingFormInvalid || !bookingForm.acceptAgreement
   }, [
     backup.date,
-    backup.message,
+    backup.message?.value,
     backup.service,
     backup.studio,
     backup.time,
+    bookingForm.acceptAgreement,
     bookingForm.date,
-    bookingForm.email,
-    bookingForm.message,
-    bookingForm.name,
-    bookingForm.phone,
+    bookingForm.email.isValid,
+    bookingForm.email.value,
+    bookingForm.message.isValid,
+    bookingForm.message.value,
+    bookingForm.name.isValid,
+    bookingForm.name.value,
+    bookingForm.phone.isValid,
+    bookingForm.phone.value,
     bookingForm.service,
     bookingForm.serviceType,
     bookingForm.studio,
@@ -201,14 +241,18 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
       if (!appointmentId) return
 
       const editAppointmentData = {
-        studio: !!bookingForm.studio ? bookingForm.studio : undefined,
-        service: !!bookingForm.service ? bookingForm.service : undefined,
-        date: !!bookingForm.date ? bookingForm.date : undefined,
-        time: !!bookingForm.time ? bookingForm.time : undefined,
+        studio: bookingForm.studio,
+        service: bookingForm.service,
+        date: bookingForm.date,
+        time: bookingForm.time,
+        message: bookingForm.message.value,
       }
       dispatch(setIsLoading(true))
-      const result = await editAppointment(editAppointmentData, appointmentId)
-      dispatch(setIsLoading(false))
+      const result = await editAppointment(
+        editAppointmentData,
+        appointmentId,
+        locale || 'en'
+      )
       if (result.message === 'Appointment edited successfully') {
         push('/appointment/rescheduled')
       }
@@ -216,11 +260,19 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
     }, [
       appointmentId,
       bookingForm.date,
+      bookingForm.message.value,
       bookingForm.service,
       bookingForm.studio,
       bookingForm.time,
+      locale,
       push,
     ])
+
+  const handleAskDeleteAppointment: MouseEventHandler<HTMLButtonElement> =
+    useCallback(async () => {
+      dispatch(setIsModalOpen(true))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
   const handleDeleteAppointment: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
@@ -228,13 +280,38 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
 
       dispatch(setIsLoading(true))
       const res = await deleteAppointment(appointmentId)
-      dispatch(setIsLoading(false))
       if (res.message === 'Appointment deleted successfully') {
         dispatch(clearForm())
+        dispatch(setIsModalOpen(false))
         push('/appointment/deleted')
+        dispatch(setIsLoading(false))
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [appointmentId, push])
+
+  const isFormLoading = useMemo(() => {
+    return !!isLoading || !bookingForm.serviceType || !bookingForm.studio
+  }, [bookingForm.serviceType, bookingForm.studio, isLoading])
+
+  const isRescheduleFormLoading = useMemo(() => {
+    return (
+      !!isLoading ||
+      !bookingForm.name.value ||
+      !bookingForm.phone.value ||
+      !bookingForm.email.value ||
+      !bookingForm.service ||
+      !bookingForm.serviceType ||
+      !bookingForm.studio
+    )
+  }, [
+    bookingForm.email.value,
+    bookingForm.name.value,
+    bookingForm.phone.value,
+    bookingForm.service,
+    bookingForm.serviceType,
+    bookingForm.studio,
+    isLoading,
+  ])
 
   return {
     handleChangeName,
@@ -246,10 +323,14 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
     handleChangeDate,
     handleChangeTime,
     handleChangeMessage,
+    handleChangeAcceptAgreement,
     handleSubmitForm,
     isBookButtonDisable,
     handleSaveChanges,
     handleDeleteAppointment,
+    handleAskDeleteAppointment,
+    isFormLoading,
+    isRescheduleFormLoading,
   }
 }
 
@@ -258,6 +339,7 @@ export const useGetFormDataHook = (isEdit: boolean) => {
     (state: RootState) => state.bookingForm.bookingData
   )
   const loadedData = useSelector((state: RootState) => state.loadedData)
+  const studios = useSelector((state: RootState) => state.loadedData.studios)
   const t = useTranslations()
 
   const services = useMemo(
@@ -294,7 +376,7 @@ export const useGetFormDataHook = (isEdit: boolean) => {
     )?.time
 
     if (!!choosedServiceDuration && choosedServiceDuration >= 30) {
-      const deletedTimes: string[] = []
+      const deletedTimes: string[] = ['19:45']
       loadedData.data.forEach((data) => {
         const date = data.date
 
@@ -335,6 +417,7 @@ export const useGetFormDataHook = (isEdit: boolean) => {
   ])
 
   return {
+    studios,
     services: formServices,
     serviceTypes: formServiceTypes,
     times: formTimes,

@@ -1,15 +1,29 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
 export type BookingDataT = {
-  name: string
-  phone: string
-  email: string
+  name: {
+    value: string
+    isValid: boolean
+  }
+  phone: {
+    value: string
+    isValid: boolean
+  }
+  email: {
+    value: string
+    isValid: boolean
+  }
   studio: string
   serviceType: string
   service: string
   date: string
   time: string
-  message: string
+  message: {
+    value: string
+    isValid: boolean
+  }
+  acceptAgreement: boolean
+  appointmentId: string
 }
 
 export type FormStateT = {
@@ -19,15 +33,29 @@ export type FormStateT = {
 
 const initState: FormStateT = {
   bookingData: {
-    name: '',
-    phone: '',
-    email: '',
+    name: {
+      value: '',
+      isValid: true,
+    },
+    phone: {
+      value: '',
+      isValid: true,
+    },
+    email: {
+      value: '',
+      isValid: true,
+    },
     studio: '',
     serviceType: 'ears',
     service: '',
     date: '',
     time: '',
-    message: '',
+    message: {
+      value: '',
+      isValid: true,
+    },
+    acceptAgreement: false,
+    appointmentId: '',
   },
   backup: {} as BookingDataT,
 }
@@ -36,14 +64,35 @@ export const bookingFormSlice = createSlice({
   name: 'formSlice',
   initialState: initState,
   reducers: {
-    addName: (state, action: PayloadAction<string>) => {
-      state.bookingData.name = action.payload
+    addName: (
+      state,
+      action: PayloadAction<{
+        value: string
+        isValid: boolean
+      }>
+    ) => {
+      state.bookingData.name.value = action.payload.value
+      state.bookingData.name.isValid = action.payload.isValid
     },
-    addPhone: (state, action: PayloadAction<string>) => {
-      state.bookingData.phone = action.payload
+    addPhone: (
+      state,
+      action: PayloadAction<{
+        value: string
+        isValid: boolean
+      }>
+    ) => {
+      state.bookingData.phone.value = action.payload.value
+      state.bookingData.phone.isValid = action.payload.isValid
     },
-    addEmail: (state, action: PayloadAction<string>) => {
-      state.bookingData.email = action.payload
+    addEmail: (
+      state,
+      action: PayloadAction<{
+        value: string
+        isValid: boolean
+      }>
+    ) => {
+      state.bookingData.email.value = action.payload.value
+      state.bookingData.email.isValid = action.payload.isValid
     },
     addStudio: (state, action: PayloadAction<string>) => {
       state.bookingData.studio = action.payload
@@ -60,19 +109,46 @@ export const bookingFormSlice = createSlice({
     addTime: (state, action: PayloadAction<string>) => {
       state.bookingData.time = action.payload
     },
-    addMessage: (state, action: PayloadAction<string>) => {
-      state.bookingData.message = action.payload
+    addMessage: (
+      state,
+      action: PayloadAction<{
+        value: string
+        isValid: boolean
+      }>
+    ) => {
+      state.bookingData.message.value = action.payload.value
+      state.bookingData.message.isValid = action.payload.isValid
+    },
+    addAcceptAgreement: (state) => {
+      state.bookingData.acceptAgreement = !state.bookingData.acceptAgreement
+    },
+    addAppointmentId: (state, action: PayloadAction<string>) => {
+      state.bookingData.appointmentId = action.payload
     },
     clearForm: (state) => {
-      state.bookingData.name = ''
-      state.bookingData.phone = ''
-      state.bookingData.email = ''
-      state.bookingData.serviceType = ''
+      state.bookingData.name = {
+        value: '',
+        isValid: true,
+      }
+      state.bookingData.phone = {
+        value: '',
+        isValid: true,
+      }
+      state.bookingData.email = {
+        value: '',
+        isValid: true,
+      }
+      state.bookingData.serviceType = 'ears'
       state.bookingData.service = ''
-      state.bookingData.studio = '1'
+      state.bookingData.studio = ''
       state.bookingData.date = ''
       state.bookingData.time = ''
-      state.bookingData.message = ''
+      state.bookingData.message = {
+        value: '',
+        isValid: true,
+      }
+      state.bookingData.acceptAgreement = false
+      state.bookingData.appointmentId = ''
       state.backup = {} as BookingDataT
     },
     addAppointmentData: (state, action: PayloadAction<BookingDataT>) => {
@@ -85,6 +161,8 @@ export const bookingFormSlice = createSlice({
       state.bookingData.date = action.payload.date
       state.bookingData.time = action.payload.time
       state.bookingData.message = action.payload.message
+      state.bookingData.acceptAgreement = false
+      state.bookingData.appointmentId = action.payload.appointmentId
       state.backup = {
         ...action.payload,
       }
@@ -102,6 +180,8 @@ export const {
   addDate,
   addTime,
   addMessage,
+  addAcceptAgreement,
+  addAppointmentId,
   clearForm,
   addAppointmentData,
 } = bookingFormSlice.actions

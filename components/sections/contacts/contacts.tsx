@@ -1,23 +1,60 @@
-import { Form } from '../../form/form'
+import { Typography } from '@mui/material'
 import { ContentWrapper } from '../../layouts/contentWrapper'
+import { useTranslations } from 'next-intl'
 import Image from 'next/image'
+import { useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
+import { InstagramButton } from '../../../components/buttons/instagram'
+import { FacebookButton } from '../../../components/buttons/facebook'
 
 export const Contacts = () => {
+  const t = useTranslations()
+  const studios = useSelector((state: RootState) => state.loadedData.studios)
+
   return (
     <ContentWrapper>
       <div
         id="contacts"
-        className="flex flex-col desktop:flex-row items-center py-6 laptop:py-16 w-full"
+        className="flex flex-col laptop:flex-row items-start laptop:items-center w-[400px] laptop:w-full justify-center py-12 laptop:py-32 mx-auto"
       >
-        <Form />
-        <Image
-          src={'/contacts.webp'}
-          alt="contacts-image"
-          width={873}
-          height={850}
-          className="w-full desktop:w-auto desktop:h-[850px] overflow-auto"
-          priority={false}
-        />
+        <div className="flex flex-col laptop:self-end">
+          <Typography className="flex font-inter font-basic text-56 text-white pb-8">
+            {t('contacts.title')}
+          </Typography>
+          <Typography className="flex font-inter font-light text-17 text-white pb-4">
+            {t('contacts.city')}
+          </Typography>
+          <Typography className="flex font-inter font-basic text-17 text-white italic pb-4">
+            {t('contacts.studio1')}
+            {studios[0]?.address}
+          </Typography>
+          <Typography className="flex font-inter font-basic text-17 text-white italic">
+            {t('contacts.studio2')}
+            {studios[1]?.address}
+          </Typography>
+        </div>
+        <div className="py-10 laptop:py-0 laptop:px-10">
+          <Image
+            src={'/contacts.jpg'}
+            alt="contacts-image"
+            width={400}
+            height={400}
+            className="overflow-auto"
+            priority={false}
+          />
+        </div>
+        <div className="flex flex-col laptop:self-start">
+          <Typography className="flex font-inter font-basic text-17 text-white italic pb-4">
+            +48 780-743-556
+          </Typography>
+          <Typography className="flex font-inter font-light text-17 text-white pb-4">
+            daryauo.piercing@gmail.com
+          </Typography>
+          <div className="flex flex-row">
+            <InstagramButton />
+            <FacebookButton />
+          </div>
+        </div>
       </div>
     </ContentWrapper>
   )

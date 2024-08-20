@@ -23,19 +23,24 @@ const config: Config = {
     colors: {
       white: '#FFFFFF',
       black: { light: '#B2BAC2', default: '#000', strong: '#6F7E8C' },
-      grey: '#FFFFFF61',
+      grey: { light: '#FFFFFF61', default: '#1E1E1E', strong: '#343434' },
       pink: '#FADADD',
+      yellow: { light: '#FFDC97', default: '#FFA800' },
     },
     fontFamily: {
       inter: ['var(--font-inter)'],
     },
     fontSize: {
+      '12': '12px',
       '14': '14px',
       '16': '16px',
+      '17': '17px',
       '18': '18px',
       '20': '20px',
       '32': '32px',
       '40': '40px',
+      '48': '48px',
+      '56': '56px',
     },
     fontWeight: {
       light: '200',

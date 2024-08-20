@@ -1,9 +1,14 @@
 {
   "header": {
     "menu": {
-      "1": "About me",
-      "2": "Contacts"
+      "1": "Booking",
+      "2": "Contacts",
+      "3": "About me"
     }
+  },
+  "footer": {
+    "policy": "Privacy Policy",
+    "rights": "All rights reserved."
   },
   "main": {
     "title": "Self-expression and Beauty",
@@ -12,13 +17,11 @@
     "text": "Explore new facets of your style with Darya"
   },
   "about": {
-    "hello": "Hello!",
-    "text": "My name is Dasha, and I am delighted to welcome you to my world of piercing and self-expression. With a great passion for art and many years of experience in the beauty industry, I create unique and stylish piercings, helping my clients unveil new facets of their style. My mission is not just to adorn, but to help people express their individuality through amazing and creative piercings. With special attention to detail and safety, each piercing is created with love and care so that you can feel confident and stylish. Let me help you discover new possibilities for self-expression and give your look a unique character. Let's create something amazing together!",
-    "bye": "With love, Darya",
-    "button": "Book Now"
+    "hello": "From My Heart",
+    "text": "My name is Dasha, and I'm excited to welcome you to my world of piercing and self-expression. With a passion for art and years of experience in the beauty industry, I craft unique and stylish piercings that help my clients discover new aspects of their style. My mission is not just to decorate, but to help people express their individuality through creative and stunning piercings. With a focus on detail and safety, each piercing is made with love and care, so you can feel confident and stylish. Let me help you explore new ways to express yourself and give your look a distinctive character. Let's create something amazing together!",
+    "bye": "With love, Darya"
   },
   "form": {
-    "formHeader": "Feel free to reach out to me for any questions or opportunities!",
     "nameField": "Name",
     "phoneField": "Phone",
     "emailField": "Email",
@@ -28,10 +31,28 @@
     "timeField": "Time",
     "messageField": "Message",
     "messageFieldPlaceholder": "Start typing...",
+    "acceptAgreement": {
+      "start": "I accept the ",
+      "agreement": "agreement",
+      "end": " for the processing of personal data"
+    },
     "formButton": "Book Now",
     "alert": {
-      "time": "Please select a service and a date."
+      "time": "Please select a service and a date.",
+      "loading": "Please wait a few seconds while your booking is being processed..."
+    },
+    "errors": {
+      "nameNotValid": "Name is not valid or too long",
+      "emailNotValid": "Email is not valid",
+      "phoneNotValid": "Phone is not valid or too long",
+      "messageNotValid": "Message is too long"
     }
+  },
+  "contacts": {
+    "title": "Contacts",
+    "city": "Poland, Wroclaw",
+    "studio1": "Studio 1: ",
+    "studio2": "Studio 2: "
   },
   "services": {
     "ears": {
@@ -87,26 +108,38 @@
     }
   },
   "bookingConfirmation": {
-    "title": "Thank you for your booking! Administrator will contact you.",
-    "subTitle": "Your booking number: {number}",
-    "detailsTitle": "Your Booking details:",
-    "service": "Service: {service}",
-    "address": "Studio address: {address}",
-    "date": "Date: {date} {time}"
+    "title": "Thank you for your booking!",
+    "subTitle": "Your booking number is {number}",
+    "text": "We have sent an email with the details of your booking to {email}",
+    "details": {
+      "serviceTypeField": "Service Type",
+      "serviceField": "Service"
+    },
+    "buttonReturn": "Go to the main page"
   },
   "reschedule": {
     "title": "Reschedule an appointment",
-    "subTitle": "You can reschedule or cancel the appointment no later than 24 hours before the scheduled time.",
-    "buttonSave": "Save Changes",
-    "buttonDelete": "Delete appointment",
-    "buttonReturn": "Return to the main page",
+    "subTitle": "You can reschedule or cancel the appointment no later than 1 hour before the scheduled time.",
+    "buttonSave": "Reschedule the booking",
+    "buttonDelete": "Cancel the booking",
+    "buttonReturn": "Go to the main page",
     "error": "The appointment could not be found.",
     "successfullyRescheduled": "Booking has been successfully rescheduled",
-    "successfullyCanceld": "Booking has been successfully canceld",
+    "successfullyCanceld": {
+      "title": "Booking has been successfully canceld",
+      "subtitle": "We are very sorry that you canceled your appointment. We hope you will book with us again :)"
+    },
     "details": {
-      "title": "Details of Your Reservation",
+      "title": "Your booking number is {number}",
+      "text": "We have sent an email with the details of your booking to {email}",
       "serviceTypeField": "Service Type",
       "serviceField": "Service"
+    },
+    "askDelete": {
+      "title": "Are you sure you want to cancel your booking?",
+      "subtitle": "After canceling, you can make a new reservation on the website.",
+      "buttonDelete": "Cancel the booking",
+      "buttonGoBack": "Go back"
     }
   }
 }

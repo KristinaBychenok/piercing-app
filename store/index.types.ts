@@ -1,6 +1,7 @@
 export type LoadedDataType = {
   data: DateTime[]
   services: LoadedServicesType[]
+  studios: LoadedStudiosType[]
 }
 
 export interface DateTime {
@@ -15,4 +16,9 @@ export type LoadedServicesType = {
   id: number
   name: string
   type: string
+}
+
+export type LoadedStudiosType = {
+  address: string
+  id: number
 }

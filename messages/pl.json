@@ -1,9 +1,14 @@
 {
   "header": {
     "menu": {
-      "1": "O mnie",
-      "2": "Kontakty"
+      "1": "Rezerwacja",
+      "2": "Kontakty",
+      "3": "O mnie"
     }
+  },
+  "footer": {
+    "policy": "Polityka Prywatności",
+    "rights": "Wszelkie prawa zastrzeżone."
   },
   "main": {
     "title": "Wyrażanie siebie i Piękno",
@@ -12,13 +17,11 @@
     "text": "Poznaj nowe aspekty swojego stylu z Darią"
   },
   "about": {
-    "hello": "Cześć!",
-    "text": "Nazywam się Dasha i z radością witam was w moim świecie piercingu i wyrażania siebie. Z wielką pasją do sztuki i wieloletnim doświadczeniem w branży kosmetycznej tworzę unikalne i stylowe piercingi, pomagając moim klientom odkrywać nowe aspekty swojego stylu. Moim celem jest nie tylko ozdabianie, ale także pomaganie ludziom w wyrażaniu ich indywidualności poprzez niesamowite i kreatywne piercingi. Z wyjątkową dbałością o szczegóły i bezpieczeństwo, każdy piercing tworzony jest z miłością i troską, abyście mogli czuć się pewnie i stylowo. Pozwólcie mi pomóc wam odkryć nowe możliwości wyrażania siebie i nadać waszemu wyglądowi niepowtarzalny charakter. Stwórzmy razem coś niesamowitego!",
-    "bye": "Z miłością, Darya",
-    "button": "Zarezerwuj teraz"
+    "hello": "Prosto z serca",
+    "text": "Nazywam się Dasza i z radością witam Cię w moim świecie piercingu i samowyrażania. Z pasją do sztuki i wieloletnim doświadczeniem w branży beauty tworzę unikalne i stylowe piercingi, które pomagają moim klientom odkrywać nowe aspekty ich stylu. Moim celem jest nie tylko ozdabianie, ale także pomoc ludziom w wyrażaniu ich indywidualności poprzez kreatywny i olśniewający piercing. Z dbałością o szczegóły i bezpieczeństwo, każdy piercing wykonuję z miłością i troską, abyś mogła/mógł czuć się pewnie i stylowo. Pozwól mi pomóc Ci odkryć nowe sposoby wyrażania siebie i nadać Twojemu wyglądowi wyjątkowy charakter. Stwórzmy razem coś niesamowitego!",
+    "bye": "Z miłością, Daria"
   },
   "form": {
-    "formHeader": "Skontaktuj się ze mną w przypadku jakichkolwiek pytań lub możliwości!",
     "nameField": "Imię",
     "phoneField": "Telefon",
     "emailField": "Email",
@@ -28,10 +31,28 @@
     "timeField": "Czas",
     "messageField": "Wiadomość",
     "messageFieldPlaceholder": "Zacznij pisać...",
+    "acceptAgreement": {
+      "start": "Akceptuję ",
+      "agreement": "umowę",
+      "end": " na przetwarzanie danych osobowych"
+    },
     "formButton": "Rezerwuj teraz",
     "alert": {
-      "time": "Proszę wybrać usługę i datę."
+      "time": "Proszę wybrać usługę i datę.",
+      "loading": "Proszę poczekać kilka sekund, aż Twoja rezerwacja zostanie przetworzona..."
+    },
+    "errors": {
+      "nameNotValid": "Imię jest nieprawidłowe lub za długie",
+      "emailNotValid": "Email jest nieprawidłowy",
+      "phoneNotValid": "Telefon jest nieprawidłowy lub za długi",
+      "messageNotValid": "Wiadomość jest za długa"
     }
+  },
+  "contacts": {
+    "title": "Kontakty",
+    "city": "Polska, Wrocław",
+    "studio1": "Studio 1: ",
+    "studio2": "Studio 2: "
   },
   "services": {
     "ears": {
@@ -87,26 +108,38 @@
     }
   },
   "bookingConfirmation": {
-    "title": "Dziękujemy za rezerwację! Administrator skontaktuje się z Tobą.",
-    "subTitle": "Twój numer rezerwacji: {number}",
-    "detailsTitle": "Szczegóły Twojej rezerwacji:",
-    "service": "Usługa: {service}",
-    "address": "Adres studia: {address}",
-    "date": "Data: {date} {time}"
+    "title": "Dziękujemy za rezerwację!",
+    "subTitle": "Twój numer rezerwacji to {number}",
+    "text": "Wysłaliśmy e-mail z szczegółami rezerwacji na adres {email}",
+    "details": {
+      "serviceTypeField": "Typ usługi",
+      "serviceField": "Usługa"
+    },
+    "buttonReturn": "Przejdź do strony głównej"
   },
   "reschedule": {
     "title": "Przełóż wizytę",
-    "subTitle": "Możesz przełożyć lub anulować wizytę nie później niż 24 godziny przed wyznaczonym terminem.",
+    "subTitle": "Możesz przełożyć lub anulować wizytę nie później niż 1 godziny przed wyznaczonym terminem.",
     "buttonSave": "Zapisz zmiany",
     "buttonDelete": "Usuń",
     "buttonReturn": "Powrót do strony głównej",
     "error": "Nie znaleziono wizyty.",
     "successfullyRescheduled": "Rezerwacja została pomyślnie przełożona",
-    "successfullyCanceld": "Rezerwacja została pomyślnie anulowana",
+    "successfullyCanceld": {
+      "title": "Rezerwacja została pomyślnie anulowana",
+      "subtitle": "Bardzo nam przykro, że anulowałeś swoją wizytę. Mamy nadzieję, że ponownie dokonasz rezerwacji u nas :)"
+    },
     "details": {
-      "title": "Szczegóły Twojej Rezerwacji",
+      "title": "Twój numer rezerwacji to {number}",
+      "text": "Wysłaliśmy e-mail z szczegółami rezerwacji na adres {email}",
       "serviceTypeField": "Rodzaj usługi",
       "serviceField": "Usługa"
+    },
+    "askDelete": {
+      "title": "Czy na pewno chcesz anulować swoją rezerwację?",
+      "subtitle": "Po anulowaniu możesz dokonać nowej rezerwacji na stronie internetowej.",
+      "buttonDelete": "Anuluj rezerwację",
+      "buttonGoBack": "Wróć"
     }
   }
 }

@@ -30,6 +30,7 @@ export const customFieldTheme = (outerTheme: Theme) =>
             },
             '& input.Mui-disabled': {
               color: 'var(--TextField-gray)',
+              '-webkit-text-fill-color': '#FFFFFF61 !important',
             },
             '& textarea': {
               color: 'var(--TextField-white)',
@@ -41,7 +42,7 @@ export const customFieldTheme = (outerTheme: Theme) =>
               color: 'var(--TextField-gray)',
             },
             '& label.Mui-focused': {
-              color: 'var(--TextField-white)',
+              color: '#FFA800',
             },
             '& label.Mui-disabled': {
               color: 'var(--TextField-gray)',
@@ -62,20 +63,19 @@ export const customFieldTheme = (outerTheme: Theme) =>
         styleOverrides: {
           notchedOutline: {
             // borderColor: 'var(--TextField-white)',
-            border: '1px solid var(--TextField-white)',
+            border: '1px solid var(--TextField-gray)',
           },
           root: {
             [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
               borderColor: 'var(--TextField-brandBorderHoverColor)',
             },
             [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
-              // borderColor: 'var(--TextField-white)',
-              border: '2px solid var(--TextField-white)',
+              border: '2px solid #FFA800',
             },
             [`&.Mui-disabled .${outlinedInputClasses.notchedOutline}`]: {
               // borderColor: 'var(--TextField-white)',
               border: '2px solid var(--TextField-gray)',
-              color: 'var(--TextField-gray)',
+              color: 'var(--TextField-white)',
             },
           },
         },
@@ -107,11 +107,6 @@ export const customFieldTheme = (outerTheme: Theme) =>
             '&.Mui-focused:after': {
               borderBottom: '2px solid var(--TextField-white)',
             },
-            '&.Mui-disabled': {
-              // borderColor: 'var(--TextField-white)',
-              border: '2px solid var(--TextField-gray)',
-              color: 'var(--TextField-gray)',
-            },
           },
         },
       },
@@ -129,13 +124,17 @@ export const customFieldTheme = (outerTheme: Theme) =>
           root: {
             color: 'var(--TextField-white)',
             borderColor: 'var(--TextField-white)',
+            backgroundColor: 'transparent',
             '&:hover': {
-              color: 'var(--TextField-white)',
-              borderColor: 'var(--TextField-brandBorderHoverColor)',
+              backgroundColor: 'transparent',
+            },
+            '&:active': {
+              backgroundColor: 'transparent',
             },
             '&.Mui-disabled': {
               color: 'grey',
               borderColor: 'grey',
+              backgroundColor: 'transparent',
             },
           },
         },
@@ -143,15 +142,28 @@ export const customFieldTheme = (outerTheme: Theme) =>
       MuiPopover: {
         styleOverrides: {
           paper: {
-            height: '200px',
             backgroundColor: '#B2BAC2',
+          },
+        },
+      },
+      MuiList: {
+        styleOverrides: {
+          root: {
+            maxHeight: '200px',
+          },
+        },
+      },
+      MuiCheckbox: {
+        styleOverrides: {
+          root: {
+            padding: '0',
+            marginRight: '8px',
+            color: '#FFFFFF61',
+            '&.Mui-checked': {
+              color: '#fff',
+            },
           },
         },
       },
     },
   })
-
-export const studios = [
-  { label: 'Hugona Kołłątaja 21', value: '1' },
-  { label: 'Kuźnicza 25', value: '2' },
-]

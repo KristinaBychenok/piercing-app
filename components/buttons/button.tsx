@@ -1,18 +1,21 @@
 import Link from 'next/link'
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
 
 export const Button = memo(function BookNowButtonComponent({
   name,
   href,
+  onClick,
 }: {
   name: string
   href: string
+  onClick?: () => void
 }) {
+  const onClickHandler = useCallback(() => {
+    onClick && onClick()
+  }, [onClick])
+
   return (
-    <Link
-      href={href}
-      className="border border-white border-solid py-3 px-14 text-center h-fit w-fit"
-    >
+    <Link href={href} className="button w-fit" onClick={onClickHandler}>
       {name}
     </Link>
   )

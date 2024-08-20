@@ -1,5 +1,5 @@
 export const datePickerStyles = {
-  border: '1px solid white',
+  border: '1px solid grey',
   borderRadius: '4px',
   color: 'white',
   width: '100%',
@@ -12,6 +12,12 @@ export const datePickerStyles = {
   // buttons
   '& .MuiButtonBase-root': {
     color: 'white',
+  },
+  '& .MuiButtonBase-root:hover': {
+    color: '#FFDC97',
+  },
+  '& .MuiButtonBase-root:active': {
+    color: '#FFA800',
   },
   // disabled buttons
   '& .MuiButtonBase-root.Mui-disabled': {
@@ -37,6 +43,12 @@ export const datePickerStyles = {
   '& .MuiPickersDay-dayWithMargin.MuiPickersDay-today': {
     borderColor: 'white',
   },
+  // today disabled day
+  '& .MuiButtonBase-root.Mui-disabled.MuiPickersDay-root.Mui-selected.Mui-disabled.MuiPickersDay-dayWithMargin.MuiPickersDay-today':
+    {
+      borderColor: 'white',
+      color: 'white',
+    },
   // selected day
   '& .MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin': {
     backgroundColor: 'grey',
