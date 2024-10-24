@@ -13,7 +13,7 @@ export const Main = () => {
           <div className="flex flex-col desktop:flex-row items-start desktop:items-end pb-3 laptop:pb-0">
             <Typography
               variant="h1"
-              className="desktop:pr-6 font-sans font-inter"
+              className="desktop:pr-6 font-sans font-inter break-words text-wrap"
               fontSize={56}
             >
               {t('main.title')}

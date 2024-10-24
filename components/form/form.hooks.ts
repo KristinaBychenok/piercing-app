@@ -154,6 +154,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
   const handleSubmitForm: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
       dispatch(setIsLoading(true))
+      console.log(bookingForm.acceptAgreement)
       const result: { number_appointment: string } = await postAppointment(
         {
           name: bookingForm.name,
@@ -165,6 +166,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
           date: bookingForm.date,
           time: bookingForm.time,
           message: bookingForm.message,
+          acceptAgreement: bookingForm.acceptAgreement,
         },
         locale || 'en'
       )
@@ -175,6 +177,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
+      bookingForm.acceptAgreement,
       bookingForm.date,
       bookingForm.email,
       bookingForm.message,
