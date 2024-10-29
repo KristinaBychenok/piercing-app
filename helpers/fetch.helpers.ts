@@ -3,47 +3,76 @@ import {
   DateTime,
   LoadedServicesType,
   LoadedStudiosType,
+  FetchScheduleResult,
+  FetchServicesResult,
+  FetchStudiosResult,
+  FetchAppointmentResult,
+  GetAppointmentDataT,
+  EditAppointmentResult,
+  PostAppointmentResult,
+  DeleteAppointmentResult,
 } from '../store/index.types'
 
 const URL = 'https://daryauo-piercing.pl/'
 
-export const fetchSchedule = async (studio: string) => {
+export const fetchSchedule = async (
+  studio: string
+): Promise<FetchScheduleResult> => {
   try {
     const res = await fetch(`${URL}schedule?studio=${studio}`)
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while loading the schedule. Please refresh the page and try again.'
+      )
+    }
+
     const loadedData: { data: DateTime[] } = await res.json()
 
-    return loadedData.data
+    return { success: true, data: loadedData.data }
   } catch (error) {
-    console.log('Failed fetch studios schedule', error)
+    return { success: false, error: (error as Error).message }
   }
 }
 
-export const fetchServices = async () => {
+export const fetchServices = async (): Promise<FetchServicesResult> => {
   try {
     const res = await fetch(`${URL}services`)
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while loading services. Please refresh the page and try again.'
+      )
+    }
+
     const loadedServices: LoadedServicesType[] = await res.json()
 
-    return loadedServices
+    return { success: true, loadedServices: loadedServices }
   } catch (error) {
-    console.log('Failed fetch services', error)
+    return { success: false, error: (error as Error).message }
   }
 }
 
-export const fetchStudios = async () => {
+export const fetchStudios = async (): Promise<FetchStudiosResult> => {
   try {
     const res = await fetch(`${URL}studios`)
+
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while loading studios. Please refresh the page and try again.'
+      )
+    }
+
     const loadedStudios: LoadedStudiosType[] = await res.json()
 
-    return loadedStudios
+    return { success: true, loadedStudios: loadedStudios }
   } catch (error) {
-    console.log('Failed fetch studios', error)
+    return { success: false, error: (error as Error).message }
   }
 }
 
 export const postAppointment = async (
   bookingForm: Omit<BookingDataT, 'appointmentId'>,
   lang: string
-) => {
+): Promise<PostAppointmentResult> => {
   try {
     const res = await fetch(`${URL}appointment`, {
       method: 'POST',
@@ -63,36 +92,38 @@ export const postAppointment = async (
         lang: lang,
       }),
     })
-    return res.json()
+
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while adding appointment. Please refresh the page and try again.'
+      )
+    }
+
+    const result = await res.json()
+
+    return { success: true, result: result }
   } catch (error) {
-    console.log(error)
+    return { success: false, error: (error as Error).message }
   }
 }
 
-export type GetAppointmentDataT = {
-  name: string
-  phone: string
-  email: string
-  studio: string
-  serviceType: string
-  service: string
-  date: string
-  time: string
-  message: string
-  id: string
-  error_message?: string
-  lang: string
-}
-
-export const getAppointment = async (appointmentId: string) => {
+export const getAppointment = async (
+  appointmentId: string
+): Promise<FetchAppointmentResult> => {
   try {
     const res = await fetch(`${URL}appointment/${appointmentId}`)
 
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while loading appointment data. Please refresh the page and try again.'
+      )
+    }
+
     const loadedAppointment: GetAppointmentDataT = await res.json()
 
-    return loadedAppointment
+    return { success: true, loadedAppointment: loadedAppointment }
   } catch (error) {
-    console.log('Failed fetch appointment', error)
+    return { success: false, error: (error as Error).message }
   }
 }
 
@@ -108,7 +139,7 @@ export const editAppointment = async (
   bookingForm: editAppointmentDataT,
   appointmentId: string,
   lang: string
-) => {
+): Promise<EditAppointmentResult> => {
   try {
     const res = await fetch(`${URL}appointment/${appointmentId}/edit`, {
       method: 'POST',
@@ -124,13 +155,24 @@ export const editAppointment = async (
         lang: lang,
       }),
     })
-    return res.json()
+
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while editing appointment. Please refresh the page and try again.'
+      )
+    }
+
+    const result = await res.json()
+
+    return { success: true, result: result }
   } catch (error) {
-    console.log(error)
+    return { success: false, error: (error as Error).message }
   }
 }
 
-export const deleteAppointment = async (appointmentId: string) => {
+export const deleteAppointment = async (
+  appointmentId: string
+): Promise<DeleteAppointmentResult> => {
   try {
     const res = await fetch(`${URL}appointment/${appointmentId}/delete`, {
       method: 'GET',
@@ -138,8 +180,17 @@ export const deleteAppointment = async (appointmentId: string) => {
         'Content-Type': 'application/json',
       },
     })
-    return res.json()
+
+    if (res.status !== 200) {
+      throw new Error(
+        'An error occurred while deleting appointment. Please refresh the page and try again.'
+      )
+    }
+
+    const result = await res.json()
+
+    return { success: true, result: result }
   } catch (error) {
-    console.log(error)
+    return { success: false, error: (error as Error).message }
   }
 }

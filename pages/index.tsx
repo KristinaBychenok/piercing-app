@@ -1,11 +1,14 @@
 import {
   DateTime,
+  FetchScheduleResult,
+  FetchServicesResult,
+  FetchStudiosResult,
   LoadedDataType,
   LoadedServicesType,
   LoadedStudiosType,
 } from '../store/index.types'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { addLoadedData, addServices, addStudios } from '../store/index.slice'
 import {
   fetchSchedule,
@@ -21,6 +24,8 @@ import { Wrapper } from '../components/layouts/wrapper'
 import { GetStaticPropsContext } from 'next'
 import { RootState } from '../store/store'
 import { Contacts } from '../components/sections/contacts/contacts'
+import { Error } from '../components/error/error'
+import { setFetchError } from '@/store/settings.slice'
 
 export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
   const dispatch = useDispatch()
@@ -28,17 +33,40 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
     (state: RootState) => state.bookingForm.bookingData
   )
   const studios = useSelector((state: RootState) => state.loadedData.studios)
+  const fetchError = useSelector(
+    (state: RootState) => state.settings.fetchError
+  )
 
   useEffect(() => {
-    dispatch(addServices(loadedData.services))
-    dispatch(addStudios(loadedData.studios))
+    // check fetch services errors
+    if (!!loadedData.services.success) {
+      const services: LoadedServicesType[] = loadedData.services.loadedServices!
+      dispatch(addServices(services))
+    } else {
+      dispatch(setFetchError(loadedData.services.error!))
+    }
+
+    // check fetch studios errors
+    if (!!loadedData.studios.success) {
+      const studios: LoadedStudiosType[] = loadedData.studios.loadedStudios!
+      dispatch(addStudios(studios))
+    } else {
+      dispatch(setFetchError(loadedData.studios.error!))
+    }
 
     const loadedScheduleData = async () => {
-      const studioId = bookingForm.studio || String(loadedData.studios[0].id)
+      const studioId =
+        bookingForm.studio || String(loadedData.studios.loadedStudios?.[0].id)
 
-      const data: DateTime[] = (await fetchSchedule(studioId)) as DateTime[]
-      dispatch(addLoadedData(data))
-      dispatch(addStudio(studioId))
+      const result: FetchScheduleResult = await fetchSchedule(studioId)
+      // check fetch schedule errors
+      if (!!result.success) {
+        const data: DateTime[] = result.data!
+        dispatch(addLoadedData(data))
+        dispatch(addStudio(studioId))
+      } else {
+        dispatch(setFetchError(result.error!))
+      }
     }
     loadedScheduleData()
   }, [
@@ -51,6 +79,12 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
 
   return (
     <Wrapper>
+      {fetchError && (
+        <Error
+          message={fetchError}
+          onClose={() => dispatch(setFetchError(''))}
+        />
+      )}
       <Main />
       <Booking />
       <About />
@@ -61,18 +95,14 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const loadedServices: LoadedServicesType[] =
-    (await fetchServices()) as LoadedServicesType[]
-  const loadedStudios: LoadedStudiosType[] =
-    (await fetchStudios()) as LoadedStudiosType[]
+  const loadedServicesResult: FetchServicesResult = await fetchServices()
+  const loadedStudios: FetchStudiosResult = await fetchStudios()
 
-  // By returning { props: { loadedData } }, the Home component
-  // will receive `loadedData` as a prop at build time
   return {
     props: {
       messages: (await import(`../messages/${context.locale}.json`)).default,
       loadedData: {
-        services: loadedServices,
+        services: loadedServicesResult,
         studios: loadedStudios,
       },
     },

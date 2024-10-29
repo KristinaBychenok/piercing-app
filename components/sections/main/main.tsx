@@ -8,7 +8,7 @@ export const Main = () => {
   const t = useTranslations()
   return (
     <ContentWrapper>
-      <div className="flex flex-col w-full pt-6 laptop:pt-16">
+      <div className="flex flex-col w-full pt-6 laptop:pt-16 mx-auto">
         <div className="flex flex-col laptop:flex-row justify-between items-start laptop:items-center desktop:items-end">
           <div className="flex flex-col desktop:flex-row items-start desktop:items-end pb-3 laptop:pb-0">
             <Typography

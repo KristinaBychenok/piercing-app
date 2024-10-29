@@ -1,12 +1,12 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 import {
   DateTime,
-  LoadedDataType,
   LoadedServicesType,
   LoadedStudiosType,
+  LoadedDataSliceType,
 } from './index.types'
 
-const initState: LoadedDataType = {
+const initState: LoadedDataSliceType = {
   data: [],
   services: [],
   studios: [],

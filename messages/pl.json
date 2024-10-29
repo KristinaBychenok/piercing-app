@@ -50,9 +50,7 @@
   },
   "contacts": {
     "title": "Kontakty",
-    "city": "Polska, Wrocław",
-    "studio1": "Studio 1: ",
-    "studio2": "Studio 2: "
+    "city": "Polska, Wrocław"
   },
   "services": {
     "ears": {

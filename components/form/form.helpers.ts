@@ -110,8 +110,10 @@ export const getDeletedTimes = (times: string[], duration: number) => {
 }
 
 export const emailRegExp = /^[a-zA-Z0-9_.±]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
-export const nameRegExp = /^[a-zA-Z .-]+$/
-export const phoneRegExp = /^[0-9+\-\s\(\)]+$/
+// Delete name check validation (temporary)
+// export const nameRegExp = /^[a-zA-Z .-]+$/
+export const phoneRegExp =
+  /^(?!.*(?:\+48)?[\s\-()]*0{3}[\s\-()]*0{3}[\s\-()]*0{3}[\s\-()]*)[0-9+\-\s\(\)]+$/
 
 export const checkRegExpField = (input: string, regExp: RegExp) => {
   return regExp.test(input)

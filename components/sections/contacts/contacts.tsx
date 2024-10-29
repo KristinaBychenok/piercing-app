@@ -24,14 +24,16 @@ export const Contacts = () => {
           <Typography className="flex font-inter font-light text-17 text-white pb-4">
             {t('contacts.city')}
           </Typography>
-          <Typography className="flex font-inter font-basic text-17 text-white italic pb-4">
-            {t('contacts.studio1')}
-            {studios[0]?.address}
-          </Typography>
-          <Typography className="flex font-inter font-basic text-17 text-white italic">
-            {t('contacts.studio2')}
-            {studios[1]?.address}
-          </Typography>
+          {studios.map((studio, index) => {
+            return (
+              <Typography
+                key={studio.address}
+                className="flex font-inter font-basic text-17 text-white italic pb-4"
+              >
+                Studio {index + 1}: {studio.address}
+              </Typography>
+            )
+          })}
         </div>
         <div className="py-10 laptop:py-0 laptop:px-10">
           <Image
