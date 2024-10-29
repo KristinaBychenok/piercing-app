@@ -90,7 +90,7 @@ export const Form = ({
                   required
                   id="phone"
                   label={t('form.phoneField')}
-                  placeholder={'+48 000000000'}
+                  placeholder={'+48 123456789'}
                   fullWidth
                   onChange={handleChangePhone}
                   value={bookingForm.phone.value}

@@ -22,10 +22,10 @@ export const Wrapper = memo(function WrapperComponent(
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div
-        className={`mx-auto flex flex-col w-screen min-h-screen ${inter.variable}`}
+        className={`mx-auto flex flex-col min-h-screen w-full ${inter.variable}`}
       >
         <Header />
-        <div className="flex flex-col w-full mx-auto h-fit mt-[93px]">
+        <div className="flex flex-col w-full h-fit mt-[93px]">
           {props.children}
         </div>
         <Footer />

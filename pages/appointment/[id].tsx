@@ -9,7 +9,6 @@ import {
   clearForm,
 } from '../../components/form/form.slice'
 import {
-  GetAppointmentDataT,
   fetchSchedule,
   fetchServices,
   fetchStudios,
@@ -17,13 +16,18 @@ import {
 } from '../../helpers/fetch.helpers'
 import {
   DateTime,
+  FetchAppointmentResult,
+  FetchScheduleResult,
+  FetchServicesResult,
+  FetchStudiosResult,
+  GetAppointmentDataT,
   LoadedDataType,
   LoadedServicesType,
   LoadedStudiosType,
 } from '../../store/index.types'
 import { RootState } from '../../store/store'
 import { GetStaticPathsContext, GetStaticPropsContext } from 'next'
-import { setIsLoading } from '../../store/settings.slice'
+import { setFetchError, setIsLoading } from '../../store/settings.slice'
 import { Typography } from '@mui/material'
 import { useTranslations } from 'next-intl'
 import { addLoadedData, addServices, addStudios } from '../../store/index.slice'
@@ -35,65 +39,105 @@ import { Logo } from '../../components/logo/logo'
 export default function Appointment({
   loadedData,
 }: {
-  loadedData: LoadedDataType & { loadedAppointmentData: GetAppointmentDataT }
+  loadedData: LoadedDataType & { loadedAppointmentData: FetchAppointmentResult }
 }) {
   const t = useTranslations()
   const router = useRouter()
   const dispatch = useDispatch()
   const services = useSelector((state: RootState) => state.loadedData?.services)
+  const [appointmentData, setAppointmentData] = useState(
+    {} as GetAppointmentDataT
+  )
   const [isError, setIsError] = useState(false)
 
   useEffect(() => {
-    if (
-      loadedData.loadedAppointmentData.lang &&
-      router.locale !== loadedData.loadedAppointmentData.lang
-    ) {
+    // check fetch appointment errors
+    if (!!loadedData.loadedAppointmentData.success) {
+      const appointment: GetAppointmentDataT =
+        loadedData.loadedAppointmentData.loadedAppointment!
+      setAppointmentData(appointment)
+    } else {
+      dispatch(setFetchError(loadedData.loadedAppointmentData.error!))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [
+    loadedData.loadedAppointmentData.error,
+    loadedData.loadedAppointmentData.loadedAppointment,
+    loadedData.loadedAppointmentData.success,
+  ])
+
+  useEffect(() => {
+    if (appointmentData.lang && router.locale !== appointmentData.lang) {
       router.push(router.asPath, router.asPath, {
-        locale: loadedData.loadedAppointmentData.lang,
+        locale: appointmentData.lang,
       })
     }
-  }, [loadedData.loadedAppointmentData.lang, router])
+  }, [appointmentData.lang, router])
 
   useEffect(() => {
     dispatch(setIsLoading(true))
 
-    dispatch(addLoadedData(loadedData.data))
-    dispatch(addServices(loadedData.services))
-    dispatch(addStudios(loadedData.studios))
+    // check fetch schedule errors
+    if (!!loadedData.data.success) {
+      const data: DateTime[] = loadedData.data.data!
+      dispatch(addLoadedData(data))
+    } else {
+      dispatch(setFetchError(loadedData.data.error!))
+    }
 
-    const loadedAppointmentData = loadedData.loadedAppointmentData
-    if (loadedAppointmentData?.error_message || !loadedAppointmentData) {
+    // check fetch services errors
+    if (!!loadedData.services.success) {
+      const services: LoadedServicesType[] = loadedData.services.loadedServices!
+      dispatch(addServices(services))
+    } else {
+      dispatch(setFetchError(loadedData.services.error!))
+    }
+
+    // check fetch studios errors
+    if (!!loadedData.studios.success) {
+      const studios: LoadedStudiosType[] = loadedData.studios.loadedStudios!
+      dispatch(addStudios(studios))
+    } else {
+      dispatch(setFetchError(loadedData.studios.error!))
+    }
+
+    if (appointmentData.error_message || !appointmentData) {
       setIsError(true)
       return
     }
 
     const serviceType =
-      services.find(
-        (service) => String(service.id) === loadedAppointmentData.service
-      )?.type || 'ears'
+      services.find((service) => String(service.id) === appointmentData.service)
+        ?.type || 'ears'
 
-    const appointmentData: BookingDataT = {
-      name: { value: loadedAppointmentData.name, isValid: true },
-      phone: { value: loadedAppointmentData.phone, isValid: true },
-      email: { value: loadedAppointmentData.email, isValid: true },
-      studio: loadedAppointmentData.studio,
+    const appointmentDataToAdd: BookingDataT = {
+      name: { value: appointmentData.name, isValid: true },
+      phone: { value: appointmentData.phone, isValid: true },
+      email: { value: appointmentData.email, isValid: true },
+      studio: appointmentData.studio,
       serviceType: serviceType,
-      service: loadedAppointmentData.service,
-      date: loadedAppointmentData.date,
-      time: loadedAppointmentData.time,
-      message: { value: loadedAppointmentData.message || '', isValid: true },
+      service: appointmentData.service,
+      date: appointmentData.date,
+      time: appointmentData.time,
+      message: { value: appointmentData.message || '', isValid: true },
       acceptAgreement: false,
-      appointmentId: loadedAppointmentData.id,
+      appointmentId: appointmentData.id,
     }
-    dispatch(addAppointmentData({ ...appointmentData }))
+    dispatch(addAppointmentData({ ...appointmentDataToAdd }))
 
     dispatch(setIsLoading(false))
   }, [
+    appointmentData,
     dispatch,
-    loadedData.data,
-    loadedData.loadedAppointmentData,
-    loadedData.services,
-    loadedData.studios,
+    loadedData.data.data,
+    loadedData.data.error,
+    loadedData.data.success,
+    loadedData.services.error,
+    loadedData.services.loadedServices,
+    loadedData.services.success,
+    loadedData.studios.error,
+    loadedData.studios.loadedStudios,
+    loadedData.studios.success,
     services,
   ])
 
@@ -170,16 +214,18 @@ export default function Appointment({
 }
 
 export async function getStaticProps(context: GetStaticPropsContext) {
-  const loadedAppointmentData: GetAppointmentDataT = (await getAppointment(
+  const loadedAppointmentData: FetchAppointmentResult = await getAppointment(
     context.params?.id as string
-  )) as GetAppointmentDataT
-  const loadedStudios: LoadedStudiosType[] =
-    (await fetchStudios()) as LoadedStudiosType[]
-  const loadedServices: LoadedServicesType[] =
-    (await fetchServices()) as LoadedServicesType[]
-  const loadedData: DateTime[] = (await fetchSchedule(
-    loadedAppointmentData?.studio || String(loadedStudios[0].id)
-  )) as DateTime[]
+  )
+  const loadedStudios: FetchStudiosResult = await fetchStudios()
+  const loadedServices: FetchServicesResult = await fetchServices()
+
+  const studioId =
+    loadedAppointmentData.success && loadedStudios.success
+      ? loadedAppointmentData?.loadedAppointment?.id ||
+        String(loadedStudios.loadedStudios?.[0].id)
+      : '1'
+  const loadedData: FetchScheduleResult = await fetchSchedule(studioId)
 
   return {
     props: {

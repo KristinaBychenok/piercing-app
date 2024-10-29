@@ -21,7 +21,7 @@ import {
   addAppointmentId,
 } from './form.slice'
 import { Dayjs } from 'dayjs'
-import { DateTime } from '../../store/index.types'
+import { DateTime, FetchScheduleResult } from '../../store/index.types'
 import {
   deleteAppointment,
   editAppointment,
@@ -29,7 +29,11 @@ import {
   postAppointment,
 } from '../../helpers/fetch.helpers'
 import { addLoadedData } from '../../store/index.slice'
-import { setIsLoading, setIsModalOpen } from '../../store/settings.slice'
+import {
+  setFetchError,
+  setIsLoading,
+  setIsModalOpen,
+} from '../../store/settings.slice'
 import {
   checkRegExpField,
   emailRegExp,
@@ -37,7 +41,6 @@ import {
   getServiceTypes,
   getServices,
   getTimes,
-  nameRegExp,
   phoneRegExp,
 } from './form.helpers'
 import { useRouter } from 'next/router'
@@ -56,8 +59,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
   const handleChangeName: ChangeEventHandler<HTMLInputElement> = useCallback(
     (value) => {
       const isValid = value.target.value
-        ? checkRegExpField(value.target.value, nameRegExp) &&
-          value.target.value.length <= 50
+        ? value.target.value.length <= 50
         : true
       dispatch(addName({ value: value.target.value, isValid }))
     },
@@ -69,7 +71,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
     (value) => {
       const isValid = value.target.value
         ? checkRegExpField(value.target.value, phoneRegExp) &&
-          value.target.value.length <= 12
+          value.target.value.length <= 20
         : true
       dispatch(addPhone({ value: value.target.value, isValid }))
     },
@@ -109,10 +111,16 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
       if (bookingForm.time) {
         dispatch(addTime(''))
       }
-      const loadedData: DateTime[] | undefined = await fetchSchedule(
+      const result: FetchScheduleResult = await fetchSchedule(
         value.target.value
       )
-      dispatch(addLoadedData(loadedData || []))
+      // check fetch schedule errors
+      if (!!result.success) {
+        const data: DateTime[] = result.data!
+        dispatch(addLoadedData(data))
+      } else {
+        dispatch(setFetchError(result.error!))
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [bookingForm.date, bookingForm.time]
@@ -154,7 +162,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
   const handleSubmitForm: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
       dispatch(setIsLoading(true))
-      const result: { number_appointment: string } = await postAppointment(
+      const result = await postAppointment(
         {
           name: bookingForm.name,
           phone: bookingForm.phone,
@@ -165,16 +173,18 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
           date: bookingForm.date,
           time: bookingForm.time,
           message: bookingForm.message,
+          acceptAgreement: bookingForm.acceptAgreement,
         },
         locale || 'en'
       )
-      if (!!result.number_appointment) {
+      if (result.success) {
         dispatch(setIsModalOpen(true))
-        dispatch(addAppointmentId(result.number_appointment))
+        dispatch(addAppointmentId(result.result?.number_appointment!))
         dispatch(setIsLoading(false))
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
+      bookingForm.acceptAgreement,
       bookingForm.date,
       bookingForm.email,
       bookingForm.message,
@@ -253,7 +263,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
         appointmentId,
         locale || 'en'
       )
-      if (result.message === 'Appointment edited successfully') {
+      if (result.success) {
         push('/appointment/rescheduled')
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -280,7 +290,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
 
       dispatch(setIsLoading(true))
       const res = await deleteAppointment(appointmentId)
-      if (res.message === 'Appointment deleted successfully') {
+      if (res.success) {
         dispatch(clearForm())
         dispatch(setIsModalOpen(false))
         push('/appointment/deleted')
