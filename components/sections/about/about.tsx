@@ -10,7 +10,7 @@ export const About = () => {
     <ContentWrapper>
       <div
         id="about"
-        className="flex flex-col laptop:flex-row items-center w-full justify-center pt-12 laptop:pt-32"
+        className="flex flex-col laptop:flex-row items-center w-full justify-center pt-32"
       >
         <Image
           src={'/about.jpg'}

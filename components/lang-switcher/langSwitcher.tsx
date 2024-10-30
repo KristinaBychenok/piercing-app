@@ -8,8 +8,8 @@ type LangsT = {
 }
 
 const langs: LangsT[] = [
-  { code: 'en', lang: 'EN' },
   { code: 'pl', lang: 'PL' },
+  { code: 'en', lang: 'EN' },
 ]
 
 export const LangSwitcher = ({ isDrawer }: { isDrawer: boolean }) => {

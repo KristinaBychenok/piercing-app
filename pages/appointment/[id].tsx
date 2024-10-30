@@ -35,6 +35,7 @@ import Link from 'next/link'
 import { AskDeleteAppointment } from '../../components/modals/askDeleteAppointment'
 import Image from 'next/image'
 import { Logo } from '../../components/logo/logo'
+import { Error } from '../../components/error/error'
 
 export default function Appointment({
   loadedData,
@@ -48,7 +49,9 @@ export default function Appointment({
   const [appointmentData, setAppointmentData] = useState(
     {} as GetAppointmentDataT
   )
-  const [isError, setIsError] = useState(false)
+  const fetchError = useSelector(
+    (state: RootState) => state.settings.fetchError
+  )
 
   useEffect(() => {
     // check fetch appointment errors
@@ -58,6 +61,10 @@ export default function Appointment({
       setAppointmentData(appointment)
     } else {
       dispatch(setFetchError(loadedData.loadedAppointmentData.error!))
+    }
+
+    return () => {
+      dispatch(setFetchError(''))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
@@ -101,11 +108,6 @@ export default function Appointment({
       dispatch(setFetchError(loadedData.studios.error!))
     }
 
-    if (appointmentData.error_message || !appointmentData) {
-      setIsError(true)
-      return
-    }
-
     const serviceType =
       services.find((service) => String(service.id) === appointmentData.service)
         ?.type || 'ears'
@@ -143,6 +145,7 @@ export default function Appointment({
 
   const onClickLogoHandler = useCallback(() => {
     dispatch(clearForm())
+    dispatch(setFetchError(''))
   }, [dispatch])
 
   return (
@@ -151,63 +154,53 @@ export default function Appointment({
         className={`flex w-full h-[1px] bg-white absolute top-[122px]`}
       ></div>
       <ContentWrapper>
-        {!isError && (
-          <div className="flex flex-col w-full m-auto">
-            <Link
-              href={'/'}
-              className="text-2xl my-7 font-sans font-inter"
-              onClick={onClickLogoHandler}
-            >
-              <Logo />
-            </Link>
-            <div className="flex flex-col laptop:flex-row py-6 laptop:py-16 w-full">
-              <div className="flex flex-col w-full m-auto">
-                <Typography
-                  variant="h2"
-                  className="font-inter font-basic pb-8"
-                  fontSize={32}
-                >
-                  {t('reschedule.title')}
-                </Typography>
-                <Typography
-                  className="font-inter font-light pb-10"
-                  fontSize={17}
-                >
-                  {t('reschedule.subTitle')}
-                </Typography>
-                <div className="flex flex-row">
-                  <Form
-                    isEdit={true}
-                    appointmentId={router.query.id as string}
+        {fetchError && (
+          <Error
+            message={fetchError}
+            onClose={() => dispatch(setFetchError(''))}
+          />
+        )}
+
+        <div className="flex flex-col w-full m-auto">
+          <Link
+            href={'/'}
+            className="text-2xl my-7 font-sans font-inter"
+            onClick={onClickLogoHandler}
+          >
+            <Logo />
+          </Link>
+          <div className="flex flex-col laptop:flex-row py-6 laptop:py-16 w-full">
+            <div className="flex flex-col w-full m-auto">
+              <Typography
+                variant="h2"
+                className="font-inter font-basic pb-8"
+                fontSize={32}
+              >
+                {t('reschedule.title')}
+              </Typography>
+              <Typography className="font-inter font-light pb-10" fontSize={17}>
+                {t('reschedule.subTitle')}
+              </Typography>
+              <div className="flex flex-row">
+                <Form isEdit={true} appointmentId={router.query.id as string} />
+                <div className="hidden laptop:flex flex-col w-[297px] h-[970px] laptop:pt-10 laptop:ml-20">
+                  <Image
+                    src={'/reschedule.jpg'}
+                    alt="reschedule-image"
+                    width={297}
+                    height={770}
+                    className="overflow-auto h-[770px] object-cover"
+                    priority={false}
                   />
-                  <div className="hidden laptop:flex flex-col w-[297px] h-[970px] laptop:pt-10 laptop:ml-20">
-                    <Image
-                      src={'/reschedule.jpg'}
-                      alt="reschedule-image"
-                      width={297}
-                      height={770}
-                      className="overflow-auto h-[770px] object-cover"
-                      priority={false}
-                    />
-                    <Typography className="invisible laptop:visible laptop:flex font-inter font-basic text-48 desktop:text-56 text-grey-strong text-end pt-8">
-                      Enhance Style
-                    </Typography>
-                  </div>
+                  <Typography className="invisible laptop:visible laptop:flex font-inter font-basic text-48 desktop:text-56 text-grey-strong text-end pt-8">
+                    Enhance Style
+                  </Typography>
                 </div>
               </div>
             </div>
           </div>
-        )}
+        </div>
         <AskDeleteAppointment appointmentId={router.query.id as string} />
-        {!!isError && (
-          <Typography
-            variant="h2"
-            className="font-inter font-basic p-8"
-            fontSize={32}
-          >
-            {t('reschedule.error')}
-          </Typography>
-        )}
       </ContentWrapper>
     </div>
   )
@@ -222,7 +215,7 @@ export async function getStaticProps(context: GetStaticPropsContext) {
 
   const studioId =
     loadedAppointmentData.success && loadedStudios.success
-      ? loadedAppointmentData?.loadedAppointment?.id ||
+      ? loadedAppointmentData?.loadedAppointment?.studio ||
         String(loadedStudios.loadedStudios?.[0].id)
       : '1'
   const loadedData: FetchScheduleResult = await fetchSchedule(studioId)
