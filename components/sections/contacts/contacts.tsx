@@ -15,7 +15,7 @@ export const Contacts = () => {
     <ContentWrapper>
       <div
         id="contacts"
-        className="flex flex-col laptop:flex-row items-start laptop:items-center w-[400px] laptop:w-full justify-center py-12 laptop:py-32 mx-auto"
+        className="flex flex-col laptop:flex-row items-start laptop:items-center w-[400px] laptop:w-full justify-center pt-32 pb-12 mx-auto"
       >
         <div className="flex flex-col laptop:self-end">
           <Typography className="flex font-inter font-basic text-56 text-white pb-8">

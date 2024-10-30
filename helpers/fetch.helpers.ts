@@ -13,7 +13,7 @@ import {
   DeleteAppointmentResult,
 } from '../store/index.types'
 
-const URL = 'https://daryauo-piercing.pl/'
+const URL = 'https://api.daryauo-piercing.pl/'
 
 export const fetchSchedule = async (
   studio: string
@@ -118,7 +118,6 @@ export const getAppointment = async (
         'An error occurred while loading appointment data. Please refresh the page and try again.'
       )
     }
-
     const loadedAppointment: GetAppointmentDataT = await res.json()
 
     return { success: true, loadedAppointment: loadedAppointment }

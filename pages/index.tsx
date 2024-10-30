@@ -69,6 +69,10 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
       }
     }
     loadedScheduleData()
+
+    return () => {
+      dispatch(setFetchError(''))
+    }
   }, [
     bookingForm.studio,
     dispatch,

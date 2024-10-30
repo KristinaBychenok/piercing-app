@@ -28,15 +28,15 @@ export const Main = () => {
           </div>
           <Button name={t('main.button')} href="/#booking" />
         </div>
-        <div className="flex items-center justify-center w-full mt-6 h-[246px] laptop:h-[726px] relative">
+        <div className="flex items-center justify-center w-full mt-6 h-[726px] relative">
           <Image
             src={'/main.jpg'}
             alt="main-image"
             priority={true}
-            width={1344}
-            height={726}
+            width={2000}
+            height={1000}
             // sizes="(min-width: 1440px ) 1440px 726px, (min-width: 1024px) 928px 726px, (min-width: 768px) 672px 246px, 328px 246px"
-            className="w-full object-cover h-[246px] laptop:h-[726px]"
+            className="w-full object-cover object-center h-full"
             fill={false}
           />
           <Typography

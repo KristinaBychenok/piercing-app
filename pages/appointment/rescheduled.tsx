@@ -127,7 +127,7 @@ export default function Rescheduled() {
                 }
               </Typography>
               <Typography className="font-inter font-light mb-6" fontSize={17}>
-                +48 000-000-000
+                +48 780-743-556
               </Typography>
               <Button
                 name={t('reschedule.buttonReturn')}

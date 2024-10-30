@@ -5,10 +5,7 @@ import Image from 'next/image'
 
 export const Booking = () => {
   return (
-    <div
-      className="flex w-full relative pt-12 laptop:pt-32 overflow-x-hidden"
-      id="booking"
-    >
+    <div className="flex w-full relative pt-32 overflow-x-hidden" id="booking">
       <ContentWrapper>
         <div className="flex flex-row items-center justify-center w-full">
           <div className="hidden tablet:flex flex-col w-[297px] h-[970px] absolute tablet:-left-[249px] laptop:-left-20 desktop:static desktop:self-start top-12 laptop:top-32">
