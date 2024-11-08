@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { InstagramButton } from '../../../components/buttons/instagram'
 import { FacebookButton } from '../../../components/buttons/facebook'
+import { TokTokButton } from '../../../components/buttons/tictok'
 
 export const Contacts = () => {
   const t = useTranslations()
@@ -28,7 +29,7 @@ export const Contacts = () => {
             return (
               <Typography
                 key={studio.address}
-                className="flex font-inter font-basic text-17 text-white italic pb-4"
+                className="flex font-inter font-basic text-17 text-white italic"
               >
                 Studio {index + 1}: {studio.address}
               </Typography>
@@ -52,9 +53,10 @@ export const Contacts = () => {
           <Typography className="flex font-inter font-light text-17 text-white pb-4">
             daryauo.piercing@gmail.com
           </Typography>
-          <div className="flex flex-row">
+          <div className="flex flex-row gap-4">
             <InstagramButton />
             <FacebookButton />
+            <TokTokButton />
           </div>
         </div>
       </div>

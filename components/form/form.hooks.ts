@@ -379,7 +379,7 @@ export const useGetFormDataHook = (isEdit: boolean) => {
     const times = getTimes(bookingForm.date, loadedData.data, isEdit)
     let filteredTimes: string[] = times
     if (!bookingForm.service || !bookingForm.date)
-      return ['Please select a service and a date.']
+      return [t('form.errors.time')]
 
     const choosedServiceDuration = services.find(
       (service) => String(service.value) === bookingForm.service
@@ -424,6 +424,7 @@ export const useGetFormDataHook = (isEdit: boolean) => {
     isEdit,
     loadedData.data,
     services,
+    t,
   ])
 
   return {

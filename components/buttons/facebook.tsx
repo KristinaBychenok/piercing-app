@@ -34,7 +34,7 @@ export const FacebookButton = () => {
   return (
     <Link
       href={'https://www.facebook.com/piercing.daryauo'}
-      className="cursor-pointer flex items-center justify-center ml-4"
+      className="cursor-pointer flex items-center justify-center"
       target="_blank"
     >
       <FacebookIcon />

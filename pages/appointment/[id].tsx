@@ -26,7 +26,7 @@ import {
   LoadedStudiosType,
 } from '../../store/index.types'
 import { RootState } from '../../store/store'
-import { GetStaticPathsContext, GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 import { setFetchError, setIsLoading } from '../../store/settings.slice'
 import { Typography } from '@mui/material'
 import { useTranslations } from 'next-intl'
@@ -178,22 +178,22 @@ export default function Appointment({
               >
                 {t('reschedule.title')}
               </Typography>
-              <Typography className="font-inter font-light pb-10" fontSize={17}>
+              <Typography className="font-inter font-light" fontSize={17}>
                 {t('reschedule.subTitle')}
               </Typography>
               <div className="flex flex-row">
                 <Form isEdit={true} appointmentId={router.query.id as string} />
-                <div className="hidden laptop:flex flex-col w-[297px] h-[970px] laptop:pt-10 laptop:ml-20">
+                <div className="hidden laptop:flex flex-col w-[297px] h-[970px] laptop:pt-10 laptop:ml-20 overflow-hidden object-center">
                   <Image
                     src={'/reschedule.jpg'}
                     alt="reschedule-image"
-                    width={297}
-                    height={770}
-                    className="overflow-auto h-[770px] object-cover"
+                    width={6240}
+                    height={4160}
                     priority={false}
+                    className="h-[770px] object-cover"
                   />
                   <Typography className="invisible laptop:visible laptop:flex font-inter font-basic text-48 desktop:text-56 text-grey-strong text-end pt-8">
-                    Enhance Style
+                    {t('form.images.style')}
                   </Typography>
                 </div>
               </div>
@@ -206,7 +206,7 @@ export default function Appointment({
   )
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const loadedAppointmentData: FetchAppointmentResult = await getAppointment(
     context.params?.id as string
   )
@@ -214,9 +214,11 @@ export async function getStaticProps(context: GetStaticPropsContext) {
   const loadedServices: FetchServicesResult = await fetchServices()
 
   const studioId =
-    loadedAppointmentData.success && loadedStudios.success
-      ? loadedAppointmentData?.loadedAppointment?.studio ||
-        String(loadedStudios.loadedStudios?.[0].id)
+    !!loadedAppointmentData.success &&
+    !!loadedAppointmentData?.loadedAppointment
+      ? loadedAppointmentData?.loadedAppointment?.studio
+      : !!loadedStudios.success
+      ? String(loadedStudios.loadedStudios?.[0].id)
       : '1'
   const loadedData: FetchScheduleResult = await fetchSchedule(studioId)
 
@@ -230,12 +232,5 @@ export async function getStaticProps(context: GetStaticPropsContext) {
       },
       messages: (await import(`../../messages/${context.locale}.json`)).default,
     },
-  }
-}
-
-export const getStaticPaths = async (context: GetStaticPathsContext) => {
-  return {
-    paths: [],
-    fallback: 'blocking', // true, false or "blocking"
   }
 }

@@ -43,7 +43,7 @@ export default function DatePicker({ handleChangeDate }: DatePickerPropsT) {
           shouldDisableDate={isAvailable}
           onChange={handleChangeDate}
           sx={datePickerStyles}
-          value={bookingForm.date ? dayjs(bookingForm.date) : dayjs()}
+          value={bookingForm.date ? dayjs(bookingForm.date) : null}
         />
       </LocalizationProvider>
     </div>

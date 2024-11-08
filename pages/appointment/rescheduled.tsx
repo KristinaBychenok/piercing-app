@@ -46,14 +46,14 @@ export default function Rescheduled() {
             <Logo />
           </Link>
           <div className="flex flex-row my-16">
-            <div className="hidden laptop:flex flex-col w-[455px] h-[770px] laptop:mr-12">
+            <div className="hidden laptop:flex flex-col w-[455px] h-[770px] laptop:mr-12 overflow-hidden object-center">
               <Image
                 src={'/successfully.jpg'}
                 alt="successfully-reschedule-image"
-                width={455}
-                height={770}
-                className="overflow-auto h-[770px] object-cover"
+                width={4160}
+                height={6240}
                 priority={false}
+                className="h-[770px] object-cover"
               />
             </div>
             <div className="flex flex-col">
