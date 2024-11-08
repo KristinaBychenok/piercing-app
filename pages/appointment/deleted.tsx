@@ -26,7 +26,7 @@ export default function Deleted() {
         className={`flex w-full h-[1px] bg-white absolute top-[122px]`}
       ></div>
       <ContentWrapper>
-        <div className="flex flex-col w-full mx-auto items-center">
+        <div className="flex flex-col w-full mx-auto ">
           <Link
             href={'/'}
             className="text-2xl my-7 font-sans font-inter w-full"
@@ -52,13 +52,14 @@ export default function Deleted() {
               onClick={onClickHandler}
             />
           </div>
-          <div className="flex w-full h-[588px] mt-16 mb-6 overflow-hidden items-center justify-center">
+          <div className="flex w-full h-[450px] mt-16 mb-6 overflow-hidden items-center justify-center object-center">
             <Image
               src={'/canceld.jpg'}
               alt="canceld-image"
-              width={1000}
-              height={588}
-              className="overflow-auto"
+              width={6240}
+              height={4160}
+              priority={false}
+              className="h-[450px] object-cover"
             />
           </div>
         </div>

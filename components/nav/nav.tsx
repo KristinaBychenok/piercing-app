@@ -17,11 +17,11 @@ const menuItems = [
   },
   {
     id: '2',
-    name: 'contacts',
+    name: 'about',
   },
   {
     id: '3',
-    name: 'about',
+    name: 'contacts',
   },
 ]
 

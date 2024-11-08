@@ -9,6 +9,7 @@ import { Logo } from '../logo/logo'
 import { Typography } from '@mui/material'
 import { InstagramButton } from '../buttons/instagram'
 import { FacebookButton } from '../buttons/facebook'
+import { TokTokButton } from '../buttons/tictok'
 
 export const Footer = () => {
   const dispatch = useDispatch()
@@ -41,9 +42,10 @@ export const Footer = () => {
             </Typography>
           </div>
           <div className="flex flex-col items-end">
-            <div className="flex flex-row">
+            <div className="flex flex-row gap-4">
               <InstagramButton />
               <FacebookButton />
+              <TokTokButton />
             </div>
             <Typography className="font-inter font-basic text-12 pt-4">
               Poland, Wroclaw

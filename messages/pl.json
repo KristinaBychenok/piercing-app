@@ -45,7 +45,12 @@
       "nameNotValid": "Imię jest nieprawidłowe lub za długie",
       "emailNotValid": "Email jest nieprawidłowy",
       "phoneNotValid": "Telefon jest nieprawidłowy lub za długi",
-      "messageNotValid": "Wiadomość jest za długa"
+      "messageNotValid": "Wiadomość jest za długa",
+      "time": "Proszę wybrać usługę i datę."
+    },
+    "images": {
+      "style": "Ulepsz styl",
+      "pierced": "Zrób piercing"
     }
   },
   "contacts": {
@@ -117,7 +122,7 @@
   },
   "reschedule": {
     "title": "Przełóż wizytę",
-    "subTitle": "Możesz przełożyć lub anulować wizytę nie później niż 1 godziny przed wyznaczonym terminem.",
+    "subTitle": "Prosimy, aby w przypadku zmiany lub odwołania terminu wizyty, dokonać tego co najmniej 1 godzinę przed planowanym terminem.",
     "buttonSave": "Zapisz zmiany",
     "buttonDelete": "Usuń",
     "buttonReturn": "Powrót do strony głównej",
@@ -139,5 +144,6 @@
       "buttonDelete": "Anuluj rezerwację",
       "buttonGoBack": "Wróć"
     }
-  }
+  },
+  "fetchErrors": "Proszę odświeżyć stronę i spróbować ponownie."
 }

@@ -27,6 +27,18 @@ export const datePickerStyles = {
   '& .MuiPickersDay-root': {
     color: 'white',
   },
+  // day :hover
+  '& .MuiPickersDay-root:hover': {
+    color: 'black',
+    backgroundColor: '#FFDC97',
+    opacity: '70%',
+  },
+  // day :active
+  '& .MuiPickersDay-root:active': {
+    color: 'black',
+    backgroundColor: '#FFDC97',
+    opacity: '80%',
+  },
   // disabled day
   '& .MuiPickersDay-root.Mui-disabled': {
     color: 'grey',
@@ -51,7 +63,9 @@ export const datePickerStyles = {
     },
   // selected day
   '& .MuiPickersDay-root.Mui-selected.MuiPickersDay-dayWithMargin': {
-    backgroundColor: 'grey',
+    backgroundColor: '#FFDC97',
+    color: 'black',
+    opacity: '80%',
   },
   // months
   '& .MuiPickersMonth-monthButton': {
