@@ -48,7 +48,7 @@ export const Footer = () => {
               <TokTokButton />
             </div>
             <Typography className="font-inter font-basic text-12 pt-4">
-              Poland, Wroclaw
+              {t('footer.city')}
             </Typography>
           </div>
         </div>
