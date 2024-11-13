@@ -2,13 +2,14 @@
   "header": {
     "menu": {
       "1": "Booking",
-      "2": "Contacts",
-      "3": "About me"
+      "2": "About me",
+      "3": "Contacts"
     }
   },
   "footer": {
     "policy": "Privacy Policy",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "city": "Poland, Wroclaw"
   },
   "main": {
     "title": "Self-expression and Beauty",
@@ -36,6 +37,7 @@
       "agreement": "agreement",
       "end": " for the processing of personal data"
     },
+    "acceptAge": "I confirm that I am 18 or older, or will be accompanied by a parent.",
     "formButton": "Book Now",
     "alert": {
       "time": "Please select a service and a date.",
@@ -147,65 +149,82 @@
   },
   "fetchErrors": "Please refresh the page and try again.",
   "policy": {
-    "Intro": "Dear User, I am committed to ensuring your privacy and the comfortable use of my service. That is why I am providing you with key information regarding the processing of your personal data.",
-    "GeneralProvisions": {
-      "1": "The administrator of personal data is Darya Miadzvedzeva, located in Wrocław at 30/7b Mieszczańska Street, 50-201 Wrocław (hereinafter referred to as the Administrator).",
-      "2": "For any questions related to the processing of your personal data, you can contact us via the following email: daryauo.piercing@gmail.com or by mail at the following address: 30/7b Mieszczańska Street, 50-201 Wrocław.",
-      "3": "Your personal data is processed on the website in accordance with the requirements of the General Data Protection Regulation (GDPR; Regulation (EU) 2016/679, Polish: Rozporządzenie o ochronie danych osobowych (RODO) - hereinafter GDPR) and defines the procedures for processing personal data and the security measures implemented by the Administrator.",
-      "4": "This Privacy Policy (hereinafter referred to as the Policy) applies to all information that the Administrator may collect about visitors to the website https://daryauo-piercing.com/ (hereinafter referred to as the Site).",
-      "5": "The User is any natural person who visits the Site and/or uses the services offered on the Site, fills out forms, sends requests, or engages in other activities related to the use of the Site."
-    },
-    "PersonalDataProcessed": {
-      "1": "Name",
-      "2": "Phone number",
-      "3": "Email address",
-      "4": "Providing accurate personal data is voluntary, but without it, the service cannot be fulfilled. By providing their data, the User confirms their agreement with this Policy."
-    },
-    "PurposesOfDataProcessing": {
-      "1": "All data is processed solely for the purpose of providing services. Without consent for their processing, the Administrator cannot fulfill the service.",
-      "2": {
-        "title": "The purpose of processing the User's personal data:",
-        "1": "processing your service bookings;",
-        "2": "informing the User via email;",
-        "3": "maintaining communication with the User regarding bookings or other matters. 3.3 The Administrator has the right to send the User notifications about new services, special offers, and various events. The User can always opt out of receiving informational messages by sending an email to the Administrator at daryauo.piercing@gmail.com with the note 'Unsubscribe from notifications about new services, special offers.'"
+    "Title": "Privacy Policy",
+    "Intro1": "Dear User, ",
+    "Intro2": "I am committed to ensuring your privacy and the comfortable use of my service. That is why I am providing you with key information regarding the processing of your personal data.",
+    "items": {
+      "GeneralProvisions": {
+        "title": "General Provisions",
+        "1": "The administrator of personal data is Darya Miadzvedzeva, located in Wrocław at 30/7b Mieszczańska Street, 50-201 Wrocław (hereinafter referred to as the Administrator).",
+        "2": "For any questions related to the processing of your personal data, you can contact us via the following email: daryauo.piercing@gmail.com or by mail at the following address: 30/7b Mieszczańska Street, 50-201 Wrocław.",
+        "3": "Your personal data is processed on the website in accordance with the requirements of the General Data Protection Regulation (GDPR; Regulation (EU) 2016/679, Polish: Rozporządzenie o ochronie danych osobowych (RODO) - hereinafter GDPR) and defines the procedures for processing personal data and the security measures implemented by the Administrator.",
+        "4": "This Privacy Policy (hereinafter referred to as the Policy) applies to all information that the Administrator may collect about visitors to the website https://daryauo-piercing.com/ (hereinafter referred to as the Site).",
+        "5": "The User is any natural person who visits the Site and/or uses the services offered on the Site, fills out forms, sends requests, or engages in other activities related to the use of the Site."
+      },
+      "PersonalDataProcessed": {
+        "title": "The Administrator May Process the Following Personal Data of the User",
+        "1": "Name",
+        "2": "Phone number",
+        "3": "Email address",
+        "4": "Providing accurate personal data is voluntary, but without it, the service cannot be fulfilled. By providing their data, the User confirms their agreement with this Policy."
+      },
+      "PurposesOfDataProcessing": {
+        "title": "Purposes of Personal Data Processing",
+        "1": "All data is processed solely for the purpose of providing services. Without consent for their processing, the Administrator cannot fulfill the service.",
+        "2": {
+          "title": "The purpose of processing the User's personal data:",
+          "1": "processing your service bookings;",
+          "2": "informing the User via email;",
+          "3": "maintaining communication with the User regarding bookings or other matters."
+        },
+        "3": "The Administrator has the right to send the User notifications about new services, special offers, and various events. The User can always opt out of receiving informational messages by sending an email to the Administrator at daryauo.piercing@gmail.com with the note 'Unsubscribe from notifications about new services, special offers.'"
+      },
+      "LegalBasis": {
+        "title": "Legal Basis for the Processing of Personal Data",
+        "1": {
+          "title": "The legal bases for processing personal data by the Administrator are:",
+          "1": "Users’ consent to the processing of their personal data;",
+          "2": "GDPR;",
+          "3": "other regulatory acts in the field of data protection."
+        },
+        "2": "The Administrator processes the User's personal data only when the User fills out and/or submits it independently through forms on the Site or sends it to the Administrator via email. By filling out the relevant forms and/or sending their personal data to the Administrator, the User agrees with this Policy."
+      },
+      "SecurityPolicy": {
+        "title": "Security Policy - How the Administrator Protects Your Data",
+        "1": "Personal data provided via the form on the Site, as well as in email correspondence, is considered confidential and is not visible to third parties.",
+        "2": "The Administrator uses the latest technologies and special procedures to protect personal data, including the use of SSL certificates for encrypted connections. Personal data is stored in a database where technical and organizational measures are used to ensure the security of the processed data in accordance with GDPR requirements.",
+        "3": "The Administrator declares that all necessary technical and organizational measures have been taken to ensure the safety and integrity of the processed personal data, as well as to prevent its loss, modification, and/or unauthorized access by third parties."
+      },
+      "DataProcessingProcedures": {
+        "title": "Procedure for Collecting, Storing, Transmitting, and Other Types of Personal Data Processing",
+        "subtitle": "The security of personal data processed by the Administrator is ensured through the implementation of legal, organizational, and technical measures necessary to fully comply with the requirements of current data protection legislation.",
+        "1": "The Administrator ensures the security of personal data and takes all possible measures to prevent unauthorized access.",
+        "2": "The User's personal data will never, under any circumstances, be transferred to third parties, except for cases related to compliance with the law or when the data subject has given consent for its transfer to a third party for fulfilling obligations under a civil contract.",
+        "3": "The processing period for personal data is determined by the achievement of the purposes for which the personal data was collected. If these purposes are fulfilled or consent is withdrawn, the data is deleted unless further processing is required by law or to fullfill contractual obligations.",
+        "4": "The condition for terminating personal data processing may be the achievement of the processing purposes, the expiration of the consent period, or the withdrawal of consent by the data subject, as well as the detection of unlawful processing of personal data.",
+        "5": "Restrictions imposed by the data subject regarding the transmission (except for access provision), processing, or conditions of processing of personal data authorized for distribution do not apply in cases of processing personal data for state, public, or other public interests as defined by Polish and EU law. Transmission occurs exclusively in accordance with GDPR.",
+        "6": "The Administrator ensures the confidentiality of personal data during its processing."
+      },
+      "UserRights": {
+        "title": "What Rights Do You Have Regarding the Processing of Your Data?",
+        "1": {
+          "title": "In connection with our processing of your personal data, you have the right to:",
+          "1": "access your data, including obtaining a copy (Article 15 GDPR or, if applicable, Article 13(1)(f) GDPR);",
+          "2": "request clarification (correction) of your data (Article 16 GDPR);",
+          "3": "request deletion of data processed without a valid reason (Article 17 GDPR);",
+          "4": "restrict the processing of data (suspend data operations) (Article 18 GDPR);",
+          "5": "transfer data to another administrator (Article 20 GDPR);",
+          "6": "withdraw consent for data processing at any time, if it is based on Article 6(1)(f) of the GDPR, without affecting the processing performed based on consent before its withdrawal."
+        },
+        "2": "If you believe that your data is being processed unlawfully, you can file a complaint with the President of the Personal Data Protection Office."
+      },
+      "FinalProvisions": {
+        "title": "Final Provisions",
+        "1": "The User may request any clarification regarding the processing of their personal data by contacting the Administrator via email at daryauo.piercing@gmail.com.",
+        "2": "The Administrator reserves the right to make changes to this document in case of legislative changes related to personal data protection. Notification of any additions or changes to the Privacy Policy will be published on the website: https://daryauo-piercing.com/policy."
       }
     },
-    "LegalBasis": {
-      "1": {
-        "title": "The legal bases for processing personal data by the Administrator are:",
-        "1": "Users’ consent to the processing of their personal data;",
-        "2": "GDPR;",
-        "3": "other regulatory acts in the field of data protection. 4.2 The Administrator processes the User's personal data only when the User fills out and/or submits it independently through forms on the Site or sends it to the Administrator via email. By filling out the relevant forms and/or sending their personal data to the Administrator, the User agrees with this Policy."
-      }
-    },
-    "SecurityPolicy": {
-      "1": "Personal data provided via the form on the Site, as well as in email correspondence, is considered confidential and is not visible to third parties.",
-      "2": "The Administrator uses the latest technologies and special procedures to protect personal data, including the use of SSL certificates for encrypted connections. Personal data is stored in a database where technical and organizational measures are used to ensure the security of the processed data in accordance with GDPR requirements.",
-      "3": "The Administrator declares that all necessary technical and organizational measures have been taken to ensure the safety and integrity of the processed personal data, as well as to prevent its loss, modification, and/or unauthorized access by third parties."
-    },
-    "DataProcessingProcedures": {
-      "title": "The security of personal data processed by the Administrator is ensured through the implementation of legal, organizational, and technical measures necessary to fully comply with the requirements of current data protection legislation.",
-      "1": "The Administrator ensures the security of personal data and takes all possible measures to prevent unauthorized access.",
-      "2": "The User's personal data will never, under any circumstances, be transferred to third parties, except for cases related to compliance with the law or when the data subject has given consent for its transfer to a third party for fulfilling obligations under a civil contract.",
-      "3": "The processing period for personal data is determined by the achievement of the purposes for which the personal data was collected. If these purposes are fulfilled or consent is withdrawn, the data is deleted unless further processing is required by law or to fullfill contractual obligations.",
-      "4": "The condition for terminating personal data processing may be the achievement of the processing purposes, the expiration of the consent period, or the withdrawal of consent by the data subject, as well as the detection of unlawful processing of personal data.",
-      "5": "Restrictions imposed by the data subject regarding the transmission (except for access provision), processing, or conditions of processing of personal data authorized for distribution do not apply in cases of processing personal data for state, public, or other public interests as defined by Polish and EU law. Transmission occurs exclusively in accordance with GDPR.",
-      "6": "The Administrator ensures the confidentiality of personal data during its processing."
-    },
-    "UserRights": {
-      "1": {
-        "title": "In connection with our processing of your personal data, you have the right to:",
-        "1": "access your data, including obtaining a copy (Article 15 GDPR or, if applicable, Article 13(1)(f) GDPR);",
-        "2": "request clarification (correction) of your data (Article 16 GDPR);",
-        "3": "request deletion of data processed without a valid reason (Article 17 GDPR);",
-        "4": "restrict the processing of data (suspend data operations) (Article 18 GDPR);",
-        "5": "transfer data to another administrator (Article 20 GDPR);",
-        "6": "withdraw consent for data processing at any time, if it is based on Article 6(1)(f) of the GDPR, without affecting the processing performed based on consent before its withdrawal. 7.2 If you believe that your data is being processed unlawfully, you can file a complaint with the President of the Personal Data Protection Office."
-      }
-    },
-    "FinalProvisions": {
-      "1": "The User may request any clarification regarding the processing of their personal data by contacting the Administrator via email at daryauo.piercing@gmail.com.",
-      "2": "The Administrator reserves the right to make changes to this document in case of legislative changes related to personal data protection. Notification of any additions or changes to the Privacy Policy will be published on the website: https://daryauo-piercing.com/policy."
-    }
+    "back": "Back to main page",
+    "button": "Book Now"
   }
 }

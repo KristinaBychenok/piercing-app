@@ -7,13 +7,6 @@ export const customFieldTheme = (outerTheme: Theme) =>
       mode: outerTheme.palette.mode,
     },
     components: {
-      // MuiFormControlLabel: {
-      //   styleOverrides: {
-      //     root: {
-      //       width: '100%',
-      //     },
-      //   },
-      // },
       MuiTextField: {
         styleOverrides: {
           root: {
@@ -62,7 +55,6 @@ export const customFieldTheme = (outerTheme: Theme) =>
       MuiOutlinedInput: {
         styleOverrides: {
           notchedOutline: {
-            // borderColor: 'var(--TextField-white)',
             border: '1px solid var(--TextField-gray)',
           },
           root: {
@@ -73,7 +65,6 @@ export const customFieldTheme = (outerTheme: Theme) =>
               border: '2px solid #FFA800',
             },
             [`&.Mui-disabled .${outlinedInputClasses.notchedOutline}`]: {
-              // borderColor: 'var(--TextField-white)',
               border: '2px solid var(--TextField-gray)',
               color: 'var(--TextField-white)',
             },

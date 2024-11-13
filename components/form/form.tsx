@@ -51,6 +51,7 @@ export const Form = ({
     handleChangeTime,
     handleChangeMessage,
     handleChangeAcceptAgreement,
+    handleChangeAcceptAge,
     handleSubmitForm,
     isBookButtonDisable,
     handleSaveChanges,
@@ -232,6 +233,19 @@ export const Form = ({
                       </Link>
                     }
                     {t('form.acceptAgreement.end')}*
+                  </Typography>
+                </div>
+              )}
+              {!isEdit && (
+                <div className="flex flex-row items-center py-1">
+                  <Checkbox
+                    required
+                    className="text-grey"
+                    value={bookingForm.acceptAge}
+                    onChange={handleChangeAcceptAge}
+                  />
+                  <Typography className="font-inter font-basic" fontSize={16}>
+                    {t('form.acceptAge')}*
                   </Typography>
                 </div>
               )}

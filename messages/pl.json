@@ -2,13 +2,14 @@
   "header": {
     "menu": {
       "1": "Rezerwacja",
-      "2": "Kontakty",
-      "3": "O mnie"
+      "2": "O mnie",
+      "3": "Kontakty"
     }
   },
   "footer": {
     "policy": "Polityka Prywatności",
-    "rights": "Wszelkie prawa zastrzeżone."
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "city": "Polska, Wrocław"
   },
   "main": {
     "title": "Wyrażanie siebie i Piękno",
@@ -36,6 +37,7 @@
       "agreement": "umowę",
       "end": " na przetwarzanie danych osobowych"
     },
+    "acceptAge": "Potwierdzam, że mam 18 lat lub więcej, lub będę w towarzystwie rodzica.",
     "formButton": "Rezerwuj teraz",
     "alert": {
       "time": "Proszę wybrać usługę i datę.",
@@ -145,5 +147,84 @@
       "buttonGoBack": "Wróć"
     }
   },
-  "fetchErrors": "Proszę odświeżyć stronę i spróbować ponownie."
+  "fetchErrors": "Proszę odświeżyć stronę i spróbować ponownie.",
+  "policy": {
+    "Title": "Polityka Prywatności",
+    "Intro1": "Szanowny Użytkowniku, ",
+    "Intro2": "Dbam o Twoją prywatność oraz komfort korzystania z mojej usługi. Dlatego przekazuję Ci kluczowe informacje dotyczące przetwarzania Twoich danych osobowych.",
+    "items": {
+      "GeneralProvisions": {
+        "title": "Postanowienia ogólne",
+        "1": "Administratorem danych osobowych jest Darya Miadzvedzeva z siedzibą we Wrocławiu przy ul. Mieszczańskiej 30/7b, 50-201 Wrocław (dalej „Administrator”).",
+        "2": "W sprawach związanych z przetwarzaniem Twoich danych osobowych możesz kontaktować się pod następującym adresem e-mail: daryauo.piercing@gmail.com lub korespondencyjnie na adres: ul. Mieszczańska 30/7b, 50-201 Wrocław.",
+        "3": "Twoje dane osobowe są przetwarzane na stronie zgodnie z wymogami Ogólnego Rozporządzenia o Ochronie Danych Osobowych (ang. General Data Protection Regulation, GDPR; Rozporządzenie (UE) 2016/679, pol. Rozporządzenie o ochronie danych osobowych (RODO) - dalej GDPR) i określają sposób przetwarzania danych osobowych oraz środki zapewnienia bezpieczeństwa danych osobowych podejmowane przez Administratora.",
+        "4": "Niniejsza Polityka Prywatności (dalej „Polityka”) dotyczy wszystkich informacji, jakie Administrator może uzyskać o odwiedzających stronę https://daryauo-piercing.com/ (dalej „Strona”).",
+        "5": "Użytkownik — każda osoba fizyczna, która odwiedza Stronę i/lub korzysta z oferowanych na niej usług, wypełnia formularze, przesyła zapytania lub podejmuje inne działania związane z korzystaniem ze Strony."
+      },
+      "PersonalDataProcessed": {
+        "title": "Administrator może przetwarzać następujące dane osobowe Użytkownika",
+        "1": "Imię",
+        "2": "Numer telefonu",
+        "3": "Adres e-mail",
+        "4": "Podanie prawdziwych danych osobowych jest dobrowolne, ale bez nich świadczenie usługi nie jest możliwe. Użytkownik, przekazując swoje dane, potwierdza zgodność z niniejszą Polityką."
+      },
+      "PurposesOfDataProcessing": {
+        "title": "Cele przetwarzania danych osobowych",
+        "1": "Wszystkie dane są przetwarzane wyłącznie w celu świadczenia usług. Bez zgody na ich przetwarzanie realizacja usługi przez Administratora jest niemożliwa.",
+        "2": {
+          "title": "Cele przetwarzania danych osobowych Użytkownika:",
+          "1": "przetwarzanie rezerwacji usług;",
+          "2": "informowanie Użytkownika poprzez wysyłkę wiadomości e-mail;",
+          "3": "utrzymywanie kontaktu z Użytkownikiem w sprawach dotyczących rezerwacji lub innych kwestii."
+        },
+        "3": "Administrator ma prawo wysyłać Użytkownikowi powiadomienia o nowych usługach, ofertach specjalnych oraz różnych wydarzeniach. Użytkownik zawsze może zrezygnować z otrzymywania wiadomości informacyjnych, wysyłając do Administratora e-mail na adres daryauo.piercing@gmail.com z adnotacją „Rezygnacja z powiadomień o nowych usługach, ofertach specjalnych”."
+      },
+      "LegalBasis": {
+        "title": "Podstawy prawne przetwarzania danych osobowych",
+        "1": {
+          "title": "Podstawy prawne przetwarzania danych osobowych przez Administratora to:",
+          "1": "zgoda Użytkowników na przetwarzanie ich danych osobowych;",
+          "2": "GDPR;",
+          "3": "inne przepisy prawne w zakresie ochrony danych osobowych."
+        },
+        "2": "Administrator przetwarza dane osobowe Użytkownika wyłącznie w przypadku ich samodzielnego wypełnienia i/lub przesłania przez Użytkownika za pośrednictwem formularzy znajdujących się na Stronie lub przesłanych do Administratora za pośrednictwem e-maila. Wypełniając odpowiednie formularze i/lub przesyłając swoje dane osobowe Administratorowi, Użytkownik wyraża zgodę na niniejszą Politykę."
+      },
+      "SecurityPolicy": {
+        "title": "Polityka bezpieczeństwa — jak Administrator chroni Twoje dane",
+        "1": "Dane osobowe podane w formularzu na Stronie oraz w korespondencji e-mailowej są traktowane jako poufne i nie są widoczne dla osób trzecich.",
+        "2": "Administrator wykorzystuje najnowsze technologie i specjalne procedury w celu ochrony danych osobowych, w tym szyfrowanie połączenia za pomocą certyfikatu SSL. Dane osobowe są przechowywane w bazie danych, w której stosowane są środki techniczne i organizacyjne zapewniające bezpieczeństwo przetwarzanych danych zgodnie z wymaganiami GDPR.",
+        "3": "Administrator oświadcza, że podjął wszelkie niezbędne środki techniczne i organizacyjne w celu zapewnienia bezpieczeństwa i integralności przetwarzanych danych osobowych oraz zapobieżenia ich utracie, zmianie i/lub dostępowi osób nieupoważnionych."
+      },
+      "DataProcessingProcedures": {
+        "title": "Zasady gromadzenia, przechowywania, przekazywania i innych form przetwarzania danych osobowych",
+        "subtitle": "Bezpieczeństwo danych osobowych przetwarzanych przez Administratora zapewniane jest poprzez realizację środków prawnych, organizacyjnych i technicznych, niezbędnych do pełnego spełnienia wymogów obowiązujących przepisów w zakresie ochrony danych osobowych.",
+        "1": "Administrator zapewnia bezpieczeństwo danych osobowych i podejmuje wszelkie możliwe środki, aby wykluczyć dostęp osób nieupoważnionych do danych osobowych.",
+        "2": "Dane osobowe Użytkownika nigdy, w żadnych okolicznościach, nie będą przekazywane osobom trzecim, z wyjątkiem przypadków wynikających z obowiązującego prawa lub w przypadku, gdy osoba, której dane dotyczą, wyraziła zgodę na przekazanie danych osobie trzeciej w celu realizacji zobowiązań umowy cywilnoprawnej.",
+        "3": "Okres przetwarzania danych osobowych jest określany przez osiągnięcie celów, dla których dane osobowe zostały zebrane. W przypadku zakończenia tych celów lub cofnięcia zgody dane zostają usunięte, o ile dalsze ich przetwarzanie nie jest wymagane przez przepisy prawa lub w celu realizacji zobowiązań umownych.",
+        "4": "Warunkiem zaprzestania przetwarzania danych osobowych może być osiągnięcie celów przetwarzania, upływ terminu ważności zgody osoby, której dane dotyczą, lub cofnięcie zgody przez osobę, której dane dotyczą, a także stwierdzenie niezgodnego z prawem przetwarzania danych osobowych.",
+        "5": "Nałożone przez osobę, której dane dotyczą, ograniczenia w zakresie przekazywania (poza udostępnianiem), przetwarzania lub warunków przetwarzania (poza udostępnianiem) danych osobowych dopuszczonych do rozpowszechniania nie mają zastosowania w przypadkach przetwarzania danych osobowych w interesie publicznym, zgodnie z prawem Polski i UE. Przekazanie odbywa się wyłącznie zgodnie z GDPR.",
+        "6": "Administrator, przetwarzając dane osobowe, zapewnia ich poufność."
+      },
+      "UserRights": {
+        "title": "Jakie masz prawa w związku z przetwarzaniem Twoich danych?",
+        "1": {
+          "title": "W związku z przetwarzaniem Twoich danych osobowych masz prawo do:",
+          "1": "dostępu do swoich danych, w tym do uzyskania ich kopii (artykuł 15 GDPR lub, jeśli dotyczy, artykuł 13 ust. 1 lit. f) GDPR);",
+          "2": "żądania sprostowania danych (artykuł 16 GDPR);",
+          "3": "żądania usunięcia danych przetwarzanych bez podstawy prawnej (artykuł 17 GDPR);",
+          "4": "ograniczenia przetwarzania danych (wstrzymania operacji na danych) (artykuł 18 GDPR);",
+          "5": "przenoszenia danych do innego administratora (artykuł 20 GDPR);",
+          "6": "wycofania zgody na przetwarzanie danych w dowolnym momencie, jeśli jest ono oparte na art. 6 ust. 1 lit. f) GDPR, bez wpływu na przetwarzanie dokonane na podstawie zgody przed jej cofnięciem."
+        },
+        "2": "Jeśli uważasz, że Twoje dane są przetwarzane niezgodnie z prawem, możesz złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych."
+      },
+      "FinalProvisions": {
+        "title": "Postanowienia końcowe",
+        "1": "Użytkownik może uzyskać wszelkie wyjaśnienia dotyczące przetwarzania swoich danych osobowych, kontaktując się z Administratorem za pomocą e-maila daryauo.piercing@gmail.com.",
+        "2": "Administrator zastrzega sobie prawo do wprowadzania zmian w niniejszym dokumencie w przypadku zmian przepisów prawnych dotyczących ochrony danych osobowych. Powiadomienie o wszelkich zmianach lub uzupełnieniach Polityki Prywatności zostanie opublikowane na stronie."
+      }
+    },
+    "back": "Powrót do strony głównej",
+    "button": "Zarezerwuj teraz"
+  }
 }

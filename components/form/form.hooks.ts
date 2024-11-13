@@ -19,6 +19,7 @@ import {
   clearForm,
   addAcceptAgreement,
   addAppointmentId,
+  addAcceptAge,
 } from './form.slice'
 import { Dayjs } from 'dayjs'
 import { DateTime, FetchScheduleResult } from '../../store/index.types'
@@ -159,6 +160,15 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
       []
     )
 
+  const handleChangeAcceptAge: ChangeEventHandler<HTMLInputElement> =
+    useCallback(
+      (value) => {
+        dispatch(addAcceptAge())
+      },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      []
+    )
+
   const handleSubmitForm: MouseEventHandler<HTMLButtonElement> =
     useCallback(async () => {
       dispatch(setIsLoading(true))
@@ -174,6 +184,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
           time: bookingForm.time,
           message: bookingForm.message,
           acceptAgreement: bookingForm.acceptAgreement,
+          acceptAge: bookingForm.acceptAge,
         },
         locale || 'en'
       )
@@ -184,6 +195,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [
+      bookingForm.acceptAge,
       bookingForm.acceptAgreement,
       bookingForm.date,
       bookingForm.email,
@@ -222,13 +234,16 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
 
     return isEdit
       ? rescheduleFormInvalid
-      : isBookingFormInvalid || !bookingForm.acceptAgreement
+      : isBookingFormInvalid ||
+          !bookingForm.acceptAgreement ||
+          !bookingForm.acceptAge
   }, [
     backup.date,
     backup.message?.value,
     backup.service,
     backup.studio,
     backup.time,
+    bookingForm.acceptAge,
     bookingForm.acceptAgreement,
     bookingForm.date,
     bookingForm.email.isValid,
@@ -334,6 +349,7 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
     handleChangeTime,
     handleChangeMessage,
     handleChangeAcceptAgreement,
+    handleChangeAcceptAge,
     handleSubmitForm,
     isBookButtonDisable,
     handleSaveChanges,

@@ -23,6 +23,7 @@ export type BookingDataT = {
     isValid: boolean
   }
   acceptAgreement: boolean
+  acceptAge: boolean
   appointmentId: string
 }
 
@@ -55,6 +56,7 @@ const initState: FormStateT = {
       isValid: true,
     },
     acceptAgreement: false,
+    acceptAge: false,
     appointmentId: '',
   },
   backup: {} as BookingDataT,
@@ -122,6 +124,9 @@ export const bookingFormSlice = createSlice({
     addAcceptAgreement: (state) => {
       state.bookingData.acceptAgreement = !state.bookingData.acceptAgreement
     },
+    addAcceptAge: (state) => {
+      state.bookingData.acceptAge = !state.bookingData.acceptAge
+    },
     addAppointmentId: (state, action: PayloadAction<string>) => {
       state.bookingData.appointmentId = action.payload
     },
@@ -148,6 +153,7 @@ export const bookingFormSlice = createSlice({
         isValid: true,
       }
       state.bookingData.acceptAgreement = false
+      state.bookingData.acceptAge = false
       state.bookingData.appointmentId = ''
       state.backup = {} as BookingDataT
     },
@@ -162,6 +168,7 @@ export const bookingFormSlice = createSlice({
       state.bookingData.time = action.payload.time
       state.bookingData.message = action.payload.message
       state.bookingData.acceptAgreement = false
+      state.bookingData.acceptAge = false
       state.bookingData.appointmentId = action.payload.appointmentId
       state.backup = {
         ...action.payload,
@@ -181,6 +188,7 @@ export const {
   addTime,
   addMessage,
   addAcceptAgreement,
+  addAcceptAge,
   addAppointmentId,
   clearForm,
   addAppointmentData,

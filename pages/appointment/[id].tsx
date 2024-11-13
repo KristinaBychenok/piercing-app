@@ -123,6 +123,7 @@ export default function Appointment({
       time: appointmentData.time,
       message: { value: appointmentData.message || '', isValid: true },
       acceptAgreement: false,
+      acceptAge: false,
       appointmentId: appointmentData.id,
     }
     dispatch(addAppointmentData({ ...appointmentDataToAdd }))
