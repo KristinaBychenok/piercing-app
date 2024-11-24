@@ -13,13 +13,26 @@ import Link from 'next/link'
 import { setIsLoading } from '../../store/settings.slice'
 import Image from 'next/image'
 import { Logo } from '../../components/logo/logo'
+import { useRouter } from 'next/router'
 
 export default function Rescheduled() {
   const bookingForm = useSelector(
     (state: RootState) => state.bookingForm.bookingData
   )
   const t = useTranslations()
+  const router = useRouter()
   const { studios, services, serviceTypes } = useGetFormDataHook(false)
+
+  useEffect(() => {
+    if (
+      studios.length === 0 ||
+      services.length === 0 ||
+      serviceTypes.length === 0
+    ) {
+      router.push('/404')
+    }
+  }, [router, serviceTypes.length, services.length, studios.length])
+
   const dispatch = useDispatch()
 
   const onClickHandler = useCallback(() => {
@@ -37,23 +50,23 @@ export default function Rescheduled() {
         className={`flex w-full h-[1px] bg-white absolute top-[122px]`}
       ></div>
       <ContentWrapper>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full items-center">
           <Link
             href={'/'}
-            className="text-2xl my-7 font-sans font-inter"
+            className="text-2xl my-7 font-sans font-inter w-full"
             onClick={onClickHandler}
           >
             <Logo />
           </Link>
-          <div className="flex flex-row my-16">
-            <div className="hidden laptop:flex flex-col w-[455px] h-[770px] laptop:mr-12 overflow-hidden object-center">
+          <div className="flex flex-row mt-16">
+            <div className="hidden laptop:flex flex-col w-[455px] h-full laptop:mr-12 overflow-hidden object-center">
               <Image
                 src={'/successfully.jpg'}
                 alt="successfully-reschedule-image"
                 width={4160}
                 height={6240}
                 priority={false}
-                className="h-[770px] object-cover"
+                className="h-full object-cover"
               />
             </div>
             <div className="flex flex-col">

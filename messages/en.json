@@ -19,7 +19,7 @@
   },
   "about": {
     "hello": "From My Heart",
-    "text": "My name is Dasha, and I'm excited to welcome you to my world of piercing and self-expression. With a passion for art and years of experience in the beauty industry, I craft unique and stylish piercings that help my clients discover new aspects of their style. My mission is not just to decorate, but to help people express their individuality through creative and stunning piercings. With a focus on detail and safety, each piercing is made with love and care, so you can feel confident and stylish. Let me help you explore new ways to express yourself and give your look a distinctive character. Let's create something amazing together!",
+    "text": "My name is Darya, and I'm excited to welcome you to my world of piercing and self-expression. With a passion for art and years of experience in the beauty industry, I craft unique and stylish piercings to help my clients discover new aspects of their style. My mission is not just to decorate, but to help people express their individuality through creative and stunning piercings. With a focus on detail and safety, each piercing is made with love and care, so you can feel confident and stylish. Let me help you explore new ways to express yourself and give your look a distinctive character. Let's create something amazing together!",
     "bye": "With love, Darya"
   },
   "form": {
@@ -176,8 +176,7 @@
           "1": "processing your service bookings;",
           "2": "informing the User via email;",
           "3": "maintaining communication with the User regarding bookings or other matters."
-        },
-        "3": "The Administrator has the right to send the User notifications about new services, special offers, and various events. The User can always opt out of receiving informational messages by sending an email to the Administrator at daryauo.piercing@gmail.com with the note 'Unsubscribe from notifications about new services, special offers.'"
+        }
       },
       "LegalBasis": {
         "title": "Legal Basis for the Processing of Personal Data",
@@ -226,5 +225,13 @@
     },
     "back": "Back to main page",
     "button": "Book Now"
+  },
+  "404": {
+    "title": "Oops, Page Not Found!",
+    "subtitle": "The page you are looking for could't be found.",
+    "text": "What can you do?",
+    "text1": "Check the entered page address",
+    "text2": "Go to Main Page",
+    "back": "Back to main page"
   }
 }

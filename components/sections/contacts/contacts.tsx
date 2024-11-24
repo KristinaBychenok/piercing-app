@@ -47,12 +47,18 @@ export const Contacts = () => {
           />
         </div>
         <div className="flex flex-col laptop:self-start">
-          <Typography className="flex font-inter font-basic text-17 text-white italic pb-4">
+          <a
+            href="tel:+48780743556"
+            className="flex font-inter font-basic text-17 text-white italic pb-4 cursor-pointer hover:text-yellow-light active:text-yellow-default"
+          >
             +48 780-743-556
-          </Typography>
-          <Typography className="flex font-inter font-light text-17 text-white pb-4">
+          </a>
+          <a
+            href="mailto:daryauo.piercing@gmail.com"
+            className="flex font-inter font-light text-17 text-white pb-4 cursor-pointer hover:text-yellow-light active:text-yellow-default"
+          >
             daryauo.piercing@gmail.com
-          </Typography>
+          </a>
           <div className="flex flex-row gap-4">
             <InstagramButton />
             <FacebookButton />
