@@ -3,7 +3,7 @@
     "menu": {
       "1": "Rezerwacja",
       "2": "O mnie",
-      "3": "Kontakty"
+      "3": "Kontakt"
     }
   },
   "footer": {
@@ -13,14 +13,14 @@
   },
   "main": {
     "title": "Wyrażanie siebie i Piękno",
-    "subTitle": "Artysta piercingu",
+    "subTitle": "Piercerka",
     "button": "Zarezerwuj teraz",
     "text": "Poznaj nowe aspekty swojego stylu z Darią"
   },
   "about": {
     "hello": "Prosto z serca",
-    "text": "Nazywam się Dasza i z radością witam Cię w moim świecie piercingu i samowyrażania. Z pasją do sztuki i wieloletnim doświadczeniem w branży beauty tworzę unikalne i stylowe piercingi, które pomagają moim klientom odkrywać nowe aspekty ich stylu. Moim celem jest nie tylko ozdabianie, ale także pomoc ludziom w wyrażaniu ich indywidualności poprzez kreatywny i olśniewający piercing. Z dbałością o szczegóły i bezpieczeństwo, każdy piercing wykonuję z miłością i troską, abyś mogła/mógł czuć się pewnie i stylowo. Pozwól mi pomóc Ci odkryć nowe sposoby wyrażania siebie i nadać Twojemu wyglądowi wyjątkowy charakter. Stwórzmy razem coś niesamowitego!",
-    "bye": "Z miłością, Daria"
+    "text": "Nazywam się Darya i z radością witam Cię w moim świecie piercingu i samowyrażania. Z pasją do sztuki i wieloletnim doświadczeniem w branży beauty tworzę unikalne i stylowe piercingi, które pomagają moim klientom odkrywać nowe aspekty ich stylu. Moim celem jest nie tylko ozdabianie, ale także pomoc ludziom w wyrażaniu ich indywidualności poprzez kreatywny i olśniewający piercing. Z dbałością o szczegóły i bezpieczeństwo, każdy piercing wykonuję z miłością i troską, abyś mogła/mógł czuć się pewnie i stylowo. Pomogę Ci odkryć nowe sposoby wyrażania siebie oraz nadamy Twojemu wyglądowi wyjątkowy charakter. Stwórzmy razem coś niesamowitego!",
+    "bye": "Z miłością, Darya"
   },
   "form": {
     "nameField": "Imię",
@@ -56,7 +56,7 @@
     }
   },
   "contacts": {
-    "title": "Kontakty",
+    "title": "Kontakt",
     "city": "Polska, Wrocław"
   },
   "services": {
@@ -126,7 +126,7 @@
     "title": "Przełóż wizytę",
     "subTitle": "Prosimy, aby w przypadku zmiany lub odwołania terminu wizyty, dokonać tego co najmniej 1 godzinę przed planowanym terminem.",
     "buttonSave": "Zapisz zmiany",
-    "buttonDelete": "Usuń",
+    "buttonDelete": "Anuluj",
     "buttonReturn": "Powrót do strony głównej",
     "error": "Nie znaleziono wizyty.",
     "successfullyRescheduled": "Rezerwacja została pomyślnie przełożona",
@@ -176,8 +176,7 @@
           "1": "przetwarzanie rezerwacji usług;",
           "2": "informowanie Użytkownika poprzez wysyłkę wiadomości e-mail;",
           "3": "utrzymywanie kontaktu z Użytkownikiem w sprawach dotyczących rezerwacji lub innych kwestii."
-        },
-        "3": "Administrator ma prawo wysyłać Użytkownikowi powiadomienia o nowych usługach, ofertach specjalnych oraz różnych wydarzeniach. Użytkownik zawsze może zrezygnować z otrzymywania wiadomości informacyjnych, wysyłając do Administratora e-mail na adres daryauo.piercing@gmail.com z adnotacją „Rezygnacja z powiadomień o nowych usługach, ofertach specjalnych”."
+        }
       },
       "LegalBasis": {
         "title": "Podstawy prawne przetwarzania danych osobowych",
@@ -226,5 +225,13 @@
     },
     "back": "Powrót do strony głównej",
     "button": "Zarezerwuj teraz"
+  },
+  "404": {
+    "title": "Oops, Strona nie została znaleziona!",
+    "subtitle": "Strona, której szukasz, nie została znaleziona.",
+    "text": "Co możesz zrobić?",
+    "text1": "Sprawdź wpisany adres strony",
+    "text2": "Przejdź do Strony głównej",
+    "back": "Powrót do strony głównej"
   }
 }

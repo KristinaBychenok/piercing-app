@@ -35,7 +35,6 @@ export const Main = () => {
             priority={true}
             width={3133}
             height={2506}
-            // sizes="(min-width: 1440px ) 1440px 726px, (min-width: 1024px) 928px 726px, (min-width: 768px) 672px 246px, 328px 246px"
             className="h-[726px] object-cover"
             fill={false}
           />

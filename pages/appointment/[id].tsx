@@ -170,8 +170,8 @@ export default function Appointment({
           >
             <Logo />
           </Link>
-          <div className="flex flex-col laptop:flex-row py-6 laptop:py-16 w-full">
-            <div className="flex flex-col w-full m-auto">
+          <div className="flex flex-col laptop:flex-row py-6 laptop:py-16 w-full items-center">
+            <div className="flex flex-col w-fit m-auto">
               <Typography
                 variant="h2"
                 className="font-inter font-basic pb-8"
@@ -222,6 +222,17 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
       ? String(loadedStudios.loadedStudios?.[0].id)
       : '1'
   const loadedData: FetchScheduleResult = await fetchSchedule(studioId)
+
+  if (
+    !loadedAppointmentData.success ||
+    !loadedStudios.success ||
+    !loadedServices.success ||
+    !loadedData.success
+  ) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {

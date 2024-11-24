@@ -18,7 +18,7 @@ export const Wrapper = memo(function WrapperComponent(
     <>
       <Head>
         <title>Daryauo piercing</title>
-        <meta name="description" content="App with your recipes" />
+        <meta name="description" content="Daryauo piercing" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div

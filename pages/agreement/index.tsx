@@ -7,14 +7,13 @@ import { GetStaticPropsContext } from 'next'
 import { Wrapper } from '@/components/layouts/wrapper'
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
 import Link from 'next/link'
-import { Button } from '../../components/buttons/button'
 
 const policyTopics = [
   { id: 'GeneralProvisions', subTopics: ['1', '2', '3', '4', '5'] },
   { id: 'PersonalDataProcessed', subTopics: ['1', '2', '3', '4'] },
   {
     id: 'PurposesOfDataProcessing',
-    subTopics: ['1', ['2', '1', '2', '3'], '3'],
+    subTopics: ['1', ['2', '1', '2', '3']],
   },
   { id: 'LegalBasis', subTopics: [['1', '1', '2', '3'], '2'] },
   { id: 'SecurityPolicy', subTopics: ['1', '2', '3'] },
@@ -37,10 +36,6 @@ export default function Agreement() {
   const clickReturnHandler = () => {
     window.close()
     // window.location.href = 'http://localhost:3000'
-  }
-  const clickGoBookHandler = () => {
-    window.close()
-    // window.location.href = 'http://localhost:3000/#booking'
   }
 
   return (
@@ -172,18 +167,13 @@ export default function Agreement() {
           </ul>
           <div className="flex flex-row items-center justify-between mb-16 mt-12">
             <Link
-              href={'/#'}
+              href={'/'}
               onClick={clickReturnHandler}
               className="flex flex-row gap-4 text-white normal-case w-fit font-inter font-basic text-14 hover:text-yellow-light active:text-yellow-default bg-transparent hover:bg-transparent active:bg-transparent"
             >
               <ArrowBackIosNewIcon />
               <Typography>{t('policy.back')}</Typography>
             </Link>
-            <Button
-              name={t('main.button')}
-              href="/#"
-              onClick={clickGoBookHandler}
-            />
           </div>
         </div>
       </ContentWrapper>

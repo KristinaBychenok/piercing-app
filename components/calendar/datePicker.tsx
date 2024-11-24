@@ -17,7 +17,7 @@ export default function DatePicker({ handleChangeDate }: DatePickerPropsT) {
     (state: RootState) => state.bookingForm.bookingData
   )
 
-  const maxDay = useMemo(() => dayjs().add(60, 'day'), [])
+  const maxDay = useMemo(() => dayjs().add(14, 'day'), [])
 
   const isAvailable = useCallback(
     (date: Dayjs): boolean => {

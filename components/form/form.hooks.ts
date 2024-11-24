@@ -72,7 +72,8 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
     (value) => {
       const isValid = value.target.value
         ? checkRegExpField(value.target.value, phoneRegExp) &&
-          value.target.value.length <= 20
+          value.target.value.length <= 20 &&
+          value.target.value.trim().length > 0
         : true
       dispatch(addPhone({ value: value.target.value, isValid }))
     },
@@ -323,18 +324,12 @@ export const useChangeFormHook = (isEdit: boolean, appointmentId?: string) => {
       !!isLoading ||
       !bookingForm.name.value ||
       !bookingForm.phone.value ||
-      !bookingForm.email.value ||
-      !bookingForm.service ||
-      !bookingForm.serviceType ||
-      !bookingForm.studio
+      !bookingForm.email.value
     )
   }, [
     bookingForm.email.value,
     bookingForm.name.value,
     bookingForm.phone.value,
-    bookingForm.service,
-    bookingForm.serviceType,
-    bookingForm.studio,
     isLoading,
   ])
 

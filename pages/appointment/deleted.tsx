@@ -52,14 +52,14 @@ export default function Deleted() {
               onClick={onClickHandler}
             />
           </div>
-          <div className="flex w-full h-[450px] mt-16 mb-6 overflow-hidden items-center justify-center object-center">
+          <div className="flex w-full h-[400px] mt-16 overflow-hidden items-center justify-center object-center ">
             <Image
               src={'/canceld.jpg'}
               alt="canceld-image"
               width={6240}
               height={4160}
               priority={false}
-              className="h-[450px] object-cover"
+              className="h-[400px] object-cover"
             />
           </div>
         </div>

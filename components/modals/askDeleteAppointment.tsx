@@ -44,14 +44,14 @@ export const AskDeleteAppointment = ({
           </Typography>
           <div className="flex flex-col laptop:flex-row items-center justify-center laptop:items-center laptop:justify-start mt-6">
             <Button
-              className="p-5 w-[258px] h-12 mb-6 laptop:mb-0 laptop:mr-6 border-white text-white"
+              className="p-5 w-[258px] h-12 mb-6 laptop:mb-0 laptop:mr-6 border-white text-white hover:text-yellow-light hover:border-yellow-light active:text-yellow-default active:border-yellow-default"
               variant="outlined"
               onClick={handleClose}
             >
               {t('reschedule.askDelete.buttonGoBack')}
             </Button>
             <Button
-              className="p-5 w-[258px] h-12 border-white text-white"
+              className="p-5 w-[258px] h-12 border-white text-white hover:text-yellow-light hover:border-yellow-light active:text-yellow-default active:border-yellow-default"
               variant="outlined"
               onClick={handleDeleteAppointment}
             >
