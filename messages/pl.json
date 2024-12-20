@@ -116,6 +116,7 @@
     "title": "Dziękujemy za rezerwację!",
     "subTitle": "Twój numer rezerwacji to {number}",
     "text": "Wysłaliśmy e-mail z szczegółami rezerwacji na adres {email}",
+    "text2": "Jeśli nie widzisz wiadomości e-mail w swojej skrzynce odbiorczej, sprawdź folder ze spamem.",
     "details": {
       "serviceTypeField": "Typ usługi",
       "serviceField": "Usługa"
@@ -227,7 +228,7 @@
     "button": "Zarezerwuj teraz"
   },
   "404": {
-    "title": "Oops, Strona nie została znaleziona!",
+    "title": "404. Oops, Strona nie została znaleziona!",
     "subtitle": "Strona, której szukasz, nie została znaleziona.",
     "text": "Co możesz zrobić?",
     "text1": "Sprawdź wpisany adres strony",

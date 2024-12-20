@@ -133,7 +133,16 @@ export const customFieldTheme = (outerTheme: Theme) =>
       MuiPopover: {
         styleOverrides: {
           paper: {
-            backgroundColor: '#B2BAC2',
+            backgroundColor: '#3C3C3C',
+            color: 'var(--TextField-white)',
+          },
+          root: {
+            '& li.Mui-selected': {
+              backgroundColor: '#2c2c2c',
+            },
+            '& li.Mui-selected:hover': {
+              backgroundColor: '#2c2c2c',
+            },
           },
         },
       },

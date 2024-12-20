@@ -116,6 +116,7 @@
     "title": "Thank you for your booking!",
     "subTitle": "Your booking number is {number}",
     "text": "We have sent an email with the details of your booking to {email}",
+    "text2": "If you don’t see the email in your inbox, please check your spam folder.",
     "details": {
       "serviceTypeField": "Service Type",
       "serviceField": "Service"
@@ -227,7 +228,7 @@
     "button": "Book Now"
   },
   "404": {
-    "title": "Oops, Page Not Found!",
+    "title": "404. Oops, Page Not Found!",
     "subtitle": "The page you are looking for could't be found.",
     "text": "What can you do?",
     "text1": "Check the entered page address",

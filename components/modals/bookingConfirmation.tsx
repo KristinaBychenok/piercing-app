@@ -47,10 +47,16 @@ export const BookingConfirmationModal = () => {
               number: bookingForm.appointmentId,
             })}
           </Typography>
-          <Typography className="font-inter font-light mb-6" fontSize={17}>
+          <Typography className="font-inter font-light" fontSize={17}>
             {t('bookingConfirmation.text', {
               email: bookingForm.email.value,
             })}
+          </Typography>
+          <Typography
+            className="font-inter font-light mb-6 italic"
+            fontSize={17}
+          >
+            {t('bookingConfirmation.text2')}
           </Typography>
           <div className="flex flex-col pl-4 border-l border-white border-solid mb-8">
             <Typography className="font-inter font-light" fontSize={17}>
