@@ -1,39 +1,32 @@
 import Link from 'next/link'
 
-const FacebookIcon = () => {
-  return (
-    <div className="flex items-center justify-center w-fit h-fit text-white hover:text-yellow-light active:text-yellow-default">
-      <svg
-        width="21"
-        height="21"
-        viewBox="0 0 21 21"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g clipPath="url(#clip0_293_12295)">
-          <path
-            fill="currentColor"
-            fillRule="evenodd"
-            d="M3.08579 3.08579C3.46086 2.71071 3.96957 2.5 4.5 2.5H16.5C17.0304 2.5 17.5391 2.71071 17.9142 3.08579C18.2893 3.46086 18.5 3.96957 18.5 4.5V16.5C18.5 17.0304 18.2893 17.5391 17.9142 17.9142C17.5391 18.2893 17.0304 18.5 16.5 18.5H4.5C3.96957 18.5 3.46086 18.2893 3.08579 17.9142C2.71071 17.5391 2.5 17.0304 2.5 16.5V4.5C2.5 3.96957 2.71071 3.46086 3.08579 3.08579ZM16.5 0.5H4.5C3.43913 0.5 2.42172 0.921427 1.67157 1.67157C0.921427 2.42172 0.5 3.43913 0.5 4.5V16.5C0.5 17.5609 0.921427 18.5783 1.67157 19.3284C2.42172 20.0786 3.43913 20.5 4.5 20.5H16.5C17.5609 20.5 18.5783 20.0786 19.3284 19.3284C20.0786 18.5783 20.5 17.5609 20.5 16.5V4.5C20.5 3.43913 20.0786 2.42172 19.3284 1.67157C18.5783 0.921427 17.5609 0.5 16.5 0.5ZM9.19452 8.814V7.437C9.19452 7.43191 9.1945 7.42623 9.19448 7.42C9.19337 7.11761 9.18744 5.5 11.3175 5.5H12.8525V7.253H11.7245C11.5005 7.253 11.2745 7.484 11.2745 7.657V8.807H12.8505C12.7875 9.69 12.6565 10.497 12.6565 10.497H11.2665V15.5H9.19452V10.497H8.18652V8.814H9.19452Z"
-          />
-        </g>
-        <defs>
-          <clipPath id="clip0_293_12295">
-            <rect width="20" height="20" transform="translate(0.5 0.5)" />
-          </clipPath>
-        </defs>
-      </svg>
-    </div>
-  )
-}
-
 export const FacebookButton = () => {
   return (
     <Link
       href={'https://www.facebook.com/piercing.daryauo'}
-      className="cursor-pointer flex items-center justify-center "
+      className="cursor-pointer flex items-center justify-center text-white hover:text-yellow-light active:text-yellow-default"
       target="_blank"
     >
-      <FacebookIcon />
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_291_4710)">
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M14.2 0H5.8C4.26174 0 2.78649 0.61107 1.69878 1.69878C0.61107 2.78649 0 4.26174 0 5.8V14.2C0 17.4 2.6 20 5.8 20H14.2C15.7383 20 17.2135 19.3889 18.3012 18.3012C19.3889 17.2135 20 15.7383 20 14.2V5.8C20 2.6 17.4 0 14.2 0ZM3.05442 3.05442C3.72955 2.37928 4.64522 2 5.6 2H14.4C16.39 2 18 3.61 18 5.6V14.4C18 15.3548 17.6207 16.2705 16.9456 16.9456C16.2705 17.6207 15.3548 18 14.4 18H5.6C3.61 18 2 16.39 2 14.4V5.6C2 4.64522 2.37928 3.72955 3.05442 3.05442ZM8.69452 6.937V8.314H7.68652V9.997H8.69452V15H10.7665V9.997H12.1565C12.1565 9.997 12.2875 9.19 12.3505 8.307H10.7745V7.157C10.7745 6.984 11.0005 6.753 11.2245 6.753H12.3525V5H10.8175C8.68744 5 8.69337 6.61761 8.69448 6.92L8.69452 6.937Z"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_291_4710">
+            <rect width="20" height="20" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
     </Link>
   )
 }

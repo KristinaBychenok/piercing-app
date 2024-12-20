@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { InstagramButton } from '../../../components/buttons/instagram'
 import { FacebookButton } from '../../../components/buttons/facebook'
-import { TokTokButton } from '../../../components/buttons/tictok'
+import { TikTokButton } from '../../../components/buttons/tictok'
 
 export const Contacts = () => {
   const t = useTranslations()
@@ -62,7 +62,7 @@ export const Contacts = () => {
           <div className="flex flex-row gap-4">
             <InstagramButton />
             <FacebookButton />
-            <TokTokButton />
+            <TikTokButton />
           </div>
         </div>
       </div>
