@@ -21,7 +21,7 @@ import { Main } from '../components/sections/main/main'
 import { About } from '../components/sections/about/about'
 import { Booking } from '../components/sections/booking/booking'
 import { Wrapper } from '../components/layouts/wrapper'
-import { GetStaticPropsContext } from 'next'
+import { GetServerSidePropsContext } from 'next'
 import { RootState } from '../store/store'
 import { Contacts } from '../components/sections/contacts/contacts'
 import { Error } from '../components/error/error'
@@ -98,7 +98,7 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
   )
 }
 
-export async function getStaticProps(context: GetStaticPropsContext) {
+export async function getServerSideProps(context: GetServerSidePropsContext) {
   const loadedServicesResult: FetchServicesResult = await fetchServices()
   const loadedStudios: FetchStudiosResult = await fetchStudios()
 

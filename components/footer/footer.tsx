@@ -37,9 +37,9 @@ export const Footer = () => {
             <Link href="/agreement" locale={locale || 'en'} target="_blank">
               {t('footer.policy')}
             </Link>
-            <Typography className="font-inter font-basic text-12 pt-4">
+            {/* <Typography className="font-inter font-basic text-12 pt-4">
               © 2024 Daryauo piercing. {t('footer.rights')}
-            </Typography>
+            </Typography> */}
           </div>
           <div className="flex flex-col items-end">
             <div className="flex flex-row gap-4">

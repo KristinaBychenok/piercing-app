@@ -17,8 +17,14 @@ export const Wrapper = memo(function WrapperComponent(
   return (
     <>
       <Head>
-        <title>Daryauo piercing</title>
-        <meta name="description" content="Daryauo piercing" />
+        <title>
+          Piercing i założenie mikrodermaly we Wrocławiu | Darya Piercerka
+        </title>
+        <meta
+          name="description"
+          content="Profesjonalny piercer obok Dworca Głównego we Wrocławiu: helix, labret, septum, pępek.
+Tylko sterylne narzędzia i duży wybór wysokiej jakości kolczyków!"
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div
