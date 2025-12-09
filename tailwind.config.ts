@@ -19,6 +19,8 @@ const config: Config = {
       tablet: '640px',
       laptop: '1024px',
       desktop: '1280px',
+      desktopM: '1440px',
+      desktopL: '1680px',
     },
     colors: {
       white: '#FFFFFF',
@@ -31,6 +33,7 @@ const config: Config = {
       inter: ['var(--font-inter)'],
     },
     fontSize: {
+      '10': '10px',
       '12': '12px',
       '14': '14px',
       '16': '16px',
@@ -49,6 +52,6 @@ const config: Config = {
       'super-bold': '900',
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')({ nocompatible: true })],
 }
 export default config

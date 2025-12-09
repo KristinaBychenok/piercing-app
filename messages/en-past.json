@@ -70,6 +70,10 @@
       "title": "Ears",
       "lobe": "Lobe",
       "lobeDescription": "a classic earlobe piercing, perfect for a first-time experience. It heals quickly, pairs easily with other jewelry, and highlights your unique style.",
+      "lobeAlt1": "Healed lobe piercing by Daryauo with blue jewelry.",
+      "lobeAlt2": "Close-up of lobe piercing performed by Daryauo.",
+      "lobeAlt3": "Symmetrical lobe piercing with elegant studs.",
+      "lobeAlt4": "Fresh earlobe piercing with titanium ring.",
       "upper_lobe": "Upper lobe",
       "upper_lobeDescription": "a delicate piercing of the upper earlobe, adding an elegant and stylish touch. It pairs beautifully with other jewelry, allowing for unique combinations. Heals quickly and suits any look.",
       "helix": "Helix",
@@ -81,70 +85,68 @@
       "tragus": "Tragus",
       "tragusDescription": "a stylish cartilage piercing located at the front of the ear, near the entrance to the ear canal. It adds definition to the ear and pairs beautifully with other jewelry, such as hoops or small studs. Known for its quick healing process, it’s a popular choice for those who love minimalist piercings.",
       "rook": "Rook",
-      "rookDescription": "a stylish inner ear piercing that stands out with its subtle edge. It adds a modern twist to your look while staying elegant and versatile. Perfect for those who love unique yet refined details.",
+      "rookDescription": ".....",
       "daith": "Daith",
-      "daithDescription": "a captivating inner ear piercing that curves beautifully along the ear’s fold. It’s known for its distinctive placement and elegant, eye-catching look. Perfect for bold, confident styles.",
+      "daithDescription": ".....",
       "snug": "Snug",
-      "snugDescription": "a rare and edgy piercing placed along the inner ridge of the ear. It offers a modern, statement look that stands out from the crowd. Perfect for those who love something truly unique.",
+      "snugDescription": ".....",
       "antitragus": "Antitragus",
       "antitragusDescription": "a cartilage piercing located just below the tragus, on the opposite side of the ear. It creates a unique accent and pairs beautifully with other jewelry, adding an interesting touch to the ear. Perfect for those looking for something unconventional and expressive. Small hoops and clickers look especially stunning in this spot.",
       "flat": "Flat",
-      "flatDescription": "a sleek cartilage piercing placed on the upper flat part of the ear. It’s perfect for minimalist jewelry and layered ear designs. Simple, elegant, and effortlessly chic."
+      "flatDescription": "....."
     },
     "nose": {
       "title": "Nose",
       "septum": "Septum",
-      "septumDescription": "a timeless and versatile nose piercing that makes a bold statement. It can be styled discreetly or with standout jewelry, allowing full expression of your individuality.",
+      "septumDescription": ".....",
       "nostril": "Nostril",
-      "nostrilDescription": "a classic nose piercing that complements every style. Elegant, subtle, and endlessly customizable, it’s perfect for everyday wear or a delicate accent.",
+      "nostrilDescription": ".....",
       "bridge": "Bridge",
-      "bridgeDescription": "a distinctive piercing placed across the bridge of the nose. It creates a striking, symmetrical look that stands out with confidence and character."
+      "bridgeDescription": "....."
     },
     "eyebrow": {
       "title": "Eyebrow",
       "eyebrow": "Eyebrow",
-      "eyebrowDescription": "a bold and expressive piercing that frames your eyes with attitude. It adds character and edge, making it a perfect choice for confident, creative individuals."
+      "eyebrowDescription": "....."
     },
     "navel": {
       "title": "Navel",
       "navel": "Navel",
-      "navelDescription": "a timeless belly piercing that beautifully accentuates the waistline. It’s feminine, stylish, and perfect for showing off your personality with a touch of sparkle."
+      "navelDescription": "....."
     },
     "lips_mouth": {
       "title": "Lips & mouth",
       "labret": "Labret",
-      "labretDescription": "a classic lower lip piercing that never goes out of style. It’s versatile, comfortable, and perfect for creating both minimalist and bold looks.",
+      "labretDescription": ".....",
       "vertical_labret": "Vertical labret",
-      "vertical_labretDescription": "a unique piercing that runs vertically through the lower lip. It enhances your natural lip shape and adds a bold, modern edge.",
+      "vertical_labretDescription": ".....",
       "medusa": "Medusa",
-      "medusaDescription": "a beautiful piercing centered above the upper lip. It highlights your smile and adds a balanced, elegant touch that’s both subtle and striking.",
-      "angel_fangs": "Angel fangs",
-      "angel_fangsDescription": "a striking double lip piercing placed symmetrically on the upper lip. It creates a fierce, confident look that’s perfect for true style lovers.",
-      "snake_bites": "Snake bites",
-      "snake_bitesDescription": "a striking double lip piercing placed symmetrically on the lower lip. It creates a bold, expressive look and offers endless jewelry combinations for a truly personalized style."
+      "medusaDescription": ".....",
+      "smile": "Smile",
+      "smileDescription": "....."
     },
     "18+": {
       "title": "18+",
       "standart": "Standart nipple",
       "standartDescription": ".....",
       "double": "Double nipple",
-      "doubleDescription": "a bold yet elegant piercing that enhances natural shape and symmetry. It’s expressive, personal, and beautifully balances strength with sensuality."
+      "doubleDescription": "....."
     },
     "surf_dermal": {
       "title": "Surface & microdermal",
       "surface": "Surface",
-      "surfaceDescription": "a modern, flat piercing placed on different parts of the body. It creates a clean, refined look that’s perfect for minimalists with a creative touch.",
+      "surfaceDescription": ".....",
       "microdermal": "Microdermal",
-      "microdermalDescription": "a single-point piercing that sits beautifully on the skin. Subtle yet striking, it allows endless placement and jewelry possibilities for a unique, personal touch."
+      "microdermalDescription": "....."
     },
     "other": {
       "title": "Other",
       "consultation": "Consultation",
-      "consultationDescription": "a personalized session to discuss your piercing ideas, anatomy, and jewelry options. We help you choose what fits your style and heals beautifully.",
+      "consultationDescription": ".....",
       "downsize": "Downsize",
-      "downsizeDescription": "a follow-up appointment to replace your initial jewelry with a shorter one after healing begins. It ensures comfort, proper healing, and a flawless final look.",
+      "downsizeDescription": ".....",
       "changing_jewelry": "Changing jewelry",
-      "changing_jewelryDescription": "a quick and safe service to refresh your look with new jewelry. Whether subtle or bold, we help you change it professionally and comfortably."
+      "changing_jewelryDescription": "....."
     }
   },
   "bookingConfirmation": {

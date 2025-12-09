@@ -49,3 +49,42 @@ input:-webkit-autofill {
     @apply border border-yellow-default border-solid py-3 px-14 text-center font-inter font-basic text-14 text-yellow-default;
   }
 }
+
+/* Base scrollbar */
+.scrollbar::-webkit-scrollbar {
+  height: 2px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+/* Track (background behind the thumb) */
+.scrollbar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Thumb — visible but subtle by default */
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.38);
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+
+/* When the container is hovered — make thumb clearer */
+.scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* When the thumb itself is hovered — even darker for feedback */
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Optional — Firefox support */
+.scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+.scrollbar:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.7) transparent;
+}
