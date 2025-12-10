@@ -26,6 +26,7 @@ import { RootState } from '../store/store'
 import { Contacts } from '../components/sections/contacts/contacts'
 import { Error } from '../components/error/error'
 import { setFetchError } from '@/store/settings.slice'
+import { Services } from '@/components/sections/services/services'
 
 export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
   const dispatch = useDispatch()
@@ -37,8 +38,8 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
     (state: RootState) => state.settings.fetchError
   )
 
+  // check fetch services errors
   useEffect(() => {
-    // check fetch services errors
     if (!!loadedData.services.success) {
       const services: LoadedServicesType[] = loadedData.services.loadedServices!
       dispatch(addServices(services))
@@ -46,7 +47,18 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
       dispatch(setFetchError(loadedData.services.error!))
     }
 
-    // check fetch studios errors
+    return () => {
+      dispatch(setFetchError(''))
+    }
+  }, [
+    dispatch,
+    loadedData.services.error,
+    loadedData.services.loadedServices,
+    loadedData.services.success,
+  ])
+
+  // check fetch studios errors
+  useEffect(() => {
     if (!!loadedData.studios.success) {
       const studios: LoadedStudiosType[] = loadedData.studios.loadedStudios!
       dispatch(addStudios(studios))
@@ -54,11 +66,25 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
       dispatch(setFetchError(loadedData.studios.error!))
     }
 
+    return () => {
+      dispatch(setFetchError(''))
+    }
+  }, [
+    dispatch,
+    loadedData.studios.error,
+    loadedData.studios.loadedStudios,
+    loadedData.studios.success,
+  ])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const loadedScheduleData = async () => {
       const studioId =
         bookingForm.studio || String(loadedData.studios.loadedStudios?.[0].id)
 
       const result: FetchScheduleResult = await fetchSchedule(studioId)
+
       // check fetch schedule errors
       if (!!result.success) {
         const data: DateTime[] = result.data!
@@ -73,13 +99,7 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
     return () => {
       dispatch(setFetchError(''))
     }
-  }, [
-    bookingForm.studio,
-    dispatch,
-    loadedData.services,
-    loadedData.studios,
-    studios,
-  ])
+  }, [bookingForm.studio, dispatch, loadedData.studios.loadedStudios])
 
   return (
     <Wrapper>
@@ -90,6 +110,7 @@ export default function Home({ loadedData }: { loadedData: LoadedDataType }) {
         />
       )}
       <Main />
+      <Services />
       <Booking />
       <About />
       <Contacts />

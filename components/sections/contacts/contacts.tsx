@@ -31,7 +31,7 @@ export const Contacts = () => {
                 key={studio.address}
                 className="flex font-inter font-basic text-17 text-white italic"
               >
-                Studio {index + 1}: {studio.address}
+                {studio.address}
               </Typography>
             )
           })}

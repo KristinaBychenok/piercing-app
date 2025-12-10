@@ -70,6 +70,7 @@
       "title": "Uszy",
       "lobe": "Płatek ucha",
       "lobeDescription": "klasyczny piercing w płatku ucha, idealny na pierwszy raz. Szybko się goi, łatwo łączy się z inną biżuterią i podkreśla Twój unikalny styl.",
+      "lobeAlt1": "Healed lobe piercing by Daryauo with blue jewelry.",
       "upper_lobe": "Górny płatek ucha",
       "upper_lobeDescription": "delikatny piercing w górnej części płatka ucha, dodający elegancji i stylu. Doskonale komponuje się z inną biżuterią, pozwalając na wyjątkowe kombinacje. Szybko się goi i pasuje do każdego wyglądu.",
       "helix": "Helix",
@@ -81,70 +82,68 @@
       "tragus": "Tragus",
       "tragusDescription": "stylowy piercing w chrząstce znajdującej się z przodu ucha, przy wejściu do kanału słuchowego. Dodaje wyrazistości uchu i świetnie komponuje się z inną biżuterią, jak kółka czy małe wkręty. Znany z szybkiego gojenia, to popularny wybór dla fanów minimalistycznych piercingów.",
       "rook": "Rook",
-      "rookDescription": "stylowy piercing wewnętrznej części ucha, który wyróżnia się subtelnym charakterem. Dodaje nowoczesnego akcentu, pozostając elegancki i uniwersalny. Idealny dla osób, które cenią sobie wyjątkowe, ale wyrafinowane detale.",
+      "rookDescription": ".....",
       "daith": "Daith",
-      "daithDescription": "urzekający piercing wewnętrznej części ucha, który idealnie podkreśla naturalne linie małżowiny. Charakteryzuje się wyjątkowym umiejscowieniem i eleganckim, przyciągającym wzrok wyglądem. Idealny dla odważnych i pewnych siebie osób.",
+      "daithDescription": ".....",
       "snug": "Snug",
-      "snugDescription": "rzadki i odważny piercing umieszczony na wewnętrznej krawędzi ucha. Nadaje nowoczesny, wyrazisty wygląd, który wyróżnia się z tłumu. Idealny dla osób ceniących oryginalność.",
+      "snugDescription": ".....",
       "antitragus": "Antytragus",
-      "antitragusDescription": "odważny piercing położony naprzeciwko tragusa, tworzący harmonijny i efektowny wygląd. Dodaje głębi i charakteru każdej kompozycji kolczyków. Idealny dla osób kreatywnych i pewnych siebie.",
+      "antitragusDescription": "piercing w chrząstce znajdującej się tuż pod tragusem, po przeciwnej stronie ucha. Tworzy unikalny akcent i świetnie komponuje się z inną biżuterią, dodając ciekawy element do ucha. Idealny dla osób szukających czegoś nietypowego i wyrazistego. Szczególnie efektownie wyglądają tu małe kółka i clickery.",
       "flat": "Flat",
-      "flatDescription": "elegancki piercing chrząstki umieszczony na górnej, płaskiej części ucha. Idealny do minimalistycznej biżuterii i kompozycji z kilkoma kolczykami. Prosty, stylowy i pełen klasy."
+      "flatDescription": "....."
     },
     "nose": {
       "title": "Nos",
       "septum": "Septum",
-      "septumDescription": "ponadczasowy i uniwersalny piercing nosa, który przyciąga uwagę. Można go nosić subtelnie lub z wyrazistą biżuterią, w pełni podkreślając swoją osobowość.",
+      "septumDescription": ".....",
       "nostril": "Nostril",
-      "nostrilDescription": "klasyczny piercing nosa, który pasuje do każdego stylu. Elegancki, subtelny i łatwy do personalizacji – idealny na co dzień lub jako delikatny akcent.",
+      "nostrilDescription": ".....",
       "bridge": "Bridge",
-      "bridgeDescription": "wyjątkowy piercing umieszczony na grzbiecie nosa. Tworzy efektowny, symetryczny wygląd, który wyróżnia się pewnością siebie i charakterem."
+      "bridgeDescription": "....."
     },
     "eyebrow": {
       "title": "Brew",
       "eyebrow": "Brew",
-      "eyebrowDescription": "odważny i wyrazisty piercing, który podkreśla spojrzenie i nadaje charakteru. Świetny wybór dla osób pewnych siebie i kreatywnych."
+      "eyebrowDescription": "....."
     },
     "navel": {
       "title": "Pępek",
       "navel": "Pępek",
-      "navelDescription": "ponadczasowy piercing pępka, który pięknie podkreśla linię talii. Kobiecy, stylowy i idealny, by dodać blasku i wyrazić swoją osobowość."
+      "navelDescription": "....."
     },
     "lips_mouth": {
       "title": "Wargi & jama ustna",
       "labret": "Labret",
-      "labretDescription": "klasyczny piercing dolnej wargi, który nigdy nie wychodzi z mody. Uniwersalny, wygodny i idealny zarówno do minimalistycznych, jak i odważniejszych stylizacji.",
+      "labretDescription": ".....",
       "vertical_labret": "Vertical labret",
-      "vertical_labretDescription": "wyjątkowy piercing przebiegający pionowo przez dolną wargę. Podkreśla naturalny kształt ust i dodaje nowoczesnego, wyrazistego charakteru.",
+      "vertical_labretDescription": ".....",
       "medusa": "Medusa",
-      "medusaDescription": "piękny piercing umieszczony nad górną wargą. Podkreśla uśmiech i dodaje harmonijnego, eleganckiego akcentu, który jest jednocześnie subtelny i wyrazisty.",
-      "angel_fangs": "Angel fangs",
-      "angel_fangsDescription": "efektowny podwójny piercing umieszczony symetrycznie na górnej wardze. Nadaje odważny, pewny siebie wygląd – idealny dla osób kochających wyrazisty styl.",
-      "snake_bites": "Snake bites",
-      "snake_bitesDescription": "efektowny podwójny piercing umieszczony symetrycznie na dolnej wardze. Nadaje wyrazisty, charakterystyczny wygląd i pozwala na wiele kombinacji biżuterii, tworząc w pełni indywidualny styl."
+      "medusaDescription": ".....",
+      "smile": "Smile",
+      "smileDescription": "....."
     },
     "18+": {
       "title": "18+",
       "standart": "Standart nipple",
       "standartDescription": ".....",
       "double": "Double nipple",
-      "doubleDescription": "odważny, ale elegancki piercing, który podkreśla naturalny kształt i symetrię. Wyrazisty, osobisty i łączy w sobie siłę z subtelną zmysłowością."
+      "doubleDescription": "....."
     },
     "surf_dermal": {
       "title": "Surface & microdermal",
       "surface": "Surface",
-      "surfaceDescription": "nowoczesny, płaski piercing, który można umieścić w różnych miejscach na ciele. Nadaje elegancki, minimalistyczny wygląd z nutą kreatywności.",
+      "surfaceDescription": ".....",
       "microdermal": "Microdermal",
-      "microdermalDescription": "pojedynczy piercing osadzony bezpośrednio w skórze. Subtelny, ale wyrazisty – daje nieskończone możliwości umiejscowienia i doboru biżuterii, tworząc unikalny, osobisty akcent."
+      "microdermalDescription": "....."
     },
     "other": {
       "title": "Inne",
       "consultation": "Konsultacja",
-      "consultationDescription": "indywidualna konsultacja, podczas której omawiamy Twoje pomysły, anatomię i wybór biżuterii. Pomożemy Ci wybrać to, co najlepiej pasuje do Twojego stylu i goi się idealnie.",
+      "consultationDescription": ".....",
       "downsize": "Downsize",
-      "downsizeDescription": "wizyta kontrolna, podczas której wymieniamy biżuterię na krótszą po rozpoczęciu procesu gojenia. Zapewnia wygodę, prawidłowe gojenie i perfekcyjny efekt końcowy.",
+      "downsizeDescription": ".....",
       "changing_jewelry": "Wymiana kolczyka",
-      "changing_jewelryDescription": "szybka i bezpieczna usługa wymiany biżuterii. Niezależnie od tego, czy wybierasz coś subtelnego, czy odważnego – zmienimy ją profesjonalnie i wygodnie."
+      "changing_jewelryDescription": "....."
     }
   },
   "bookingConfirmation": {

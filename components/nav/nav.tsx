@@ -12,6 +12,10 @@ import CloseIcon from '@mui/icons-material/Close'
 
 const menuItems = [
   {
+    id: '0',
+    name: 'services',
+  },
+  {
     id: '1',
     name: 'booking',
   },
